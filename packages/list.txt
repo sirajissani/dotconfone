@@ -1,0 +1,40 @@
+zsh
+vim
+vim-gnome
+feh
+subversion
+deluge-gtk
+texlive
+pdftk
+google-chrome
+gparted
+
+mediatomb
+smbfs
+samba
+xbmc
+apache2
+vsftpd
+
+mplayer
+nvidia-vdpau-driver
+vdpau-driver
+mencoder
+ffmpeg
+mpd
+mpc
+ncmpcpp
+mpdscribble
+guayadeque
+picasa
+
+
+
+## Available in default repo settings
+zsh vim vim-gnome feh subversion deluge-gtk pdftk mediatomb smbfs samba mplayer mpd mpdscribble guayadeque mencoder ffmpeg ncmpcpp apache2 nvidia-vdpau-driver vdpau-driver vsftpd mpd gparted
+
+## Too big, less urgent
+texlive 
+
+## Need PPA
+xbmc google-chrome picasa 
