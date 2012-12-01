@@ -1,6 +1,6 @@
-\n\n
+
 ################################################################
-Started running ./init.sh at Sat Dec  1 18:15:15 IST 2012
+Started running ./init.sh at Sat Dec  1 18:31:55 IST 2012
 ################################################################
 `/home/siraj/.bashrc' -> `bash/.bashrc'
 `/home/siraj/.bash_aliases' -> `bash/.bash_aliases'
@@ -1485,5 +1485,5 @@ Started running ./init.sh at Sat Dec  1 18:15:15 IST 2012
 `/home/siraj/.mplayer/config' -> `mplayer/.mplayer/config'
 `/etc/mpd.conf' -> `mpd/mpd.conf'
 `/etc/mpdscribble.conf' -> `mpd/mpdscribble.conf'
-Stopped at Sat Dec  1 18:15:15 IST 2012
+Stopped at Sat Dec  1 18:31:56 IST 2012
 ################################################################

@@ -19,7 +19,7 @@ LOGFILE='./log'
 
 PKGWITHCONF=`cat packageswithconf.list`
 
-echo "\n\n" >> $LOGFILE
+echo "" > $LOGFILE
 echo "################################################################"     >> $LOGFILE
 echo "Started running $0 at `date`"                                         >> $LOGFILE
 echo "################################################################"     >> $LOGFILE
