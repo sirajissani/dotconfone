@@ -1,0 +1,17 @@
+# Write your default config options here!
+
+# Subtitles config
+subfont-autoscale=1
+utf8=1
+fontconfig=yes
+font=Monospace
+vf=scale=1920:-3,expand=1920:1080 # scale video to width
+sub-fuzziness=1
+
+# Console colors
+msgcolor=yes
+msgmodule=yes
+
+# Multi-threading
+#lavdopts=threads=4
+
