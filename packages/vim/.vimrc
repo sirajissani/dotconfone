@@ -64,7 +64,7 @@ set foldlevel=100     " Default all folds open
 set foldmethod=indent " Set foldmethod
 
 "Set home directory
-:cd /home/siraj/
+:cd ~
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gvim stuff
