@@ -16,13 +16,22 @@ function run_install_scripts() {
     ./scripts/install_packages_gcc.sh $1
 
     #Mono
-    ./scripts/install_packages_gcc.sh $1
+    ./scripts/install_packages_mono.sh $1
 
     #ffmpeg and friends
     ./scripts/install_packages_ffmpeg.sh $1
 
     #Misc linux tools
     ./scripts/install_packages_misc_linux.sh $1
+
+    #Fonts
+    ./scripts/install_packages_fonts.sh $1
+
+    #Cinnamon and I3
+    #./scripts/install_packages_desktop.sh $1
+
+    #Docker
+    #./scripts/install_packages_docker.sh $1
 }
 
 #Get sudo

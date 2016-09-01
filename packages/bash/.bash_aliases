@@ -165,3 +165,4 @@ alias mpch='mpc -h 192.168.1.5'
 alias gdb='gdb -q'
 alias ssh='ssh -X'
 
+alias myeclipse='GTK2_RC_FILES=.gtkrc-eclipse ~/eclipse/eclipse'
