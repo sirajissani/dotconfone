@@ -1,0 +1,15 @@
+[
+	{ "keys": ["shift+insert"], "command": "paste", "args": {"clipboard": "selection"} },
+	{ "keys": ["shift+delete"], "command": "right_delete" },
+
+	{ "keys": ["alt+left"], "command": "move", "args": {"by": "characters", "forward": false} },
+	{ "keys": ["alt+right"], "command": "move", "args": {"by": "characters", "forward": true} },
+	{ "keys": ["alt+shift+left"], "command": "move", "args": {"by": "characters", "forward": false, "extend": true} },
+	{ "keys": ["alt+shift+right"], "command": "move", "args": {"by": "characters", "forward": true, "extend": true} },
+
+	{ "keys": ["alt+shift+up"], "command": "select_lines", "args": {"forward": false, "extend": true} },
+	{ "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true, "extend": true} },
+
+	{ "keys": ["ctrl+shift+d"], "command": "find_under_expand" },
+	{ "keys": ["ctrl+d"], "command": "duplicate_line" },
+]
