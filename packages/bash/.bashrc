@@ -120,3 +120,12 @@ xhost + > /dev/null
 export PS1="[\`printf %3d \$?\`]\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\W\$ "
 
 source ~/.bash_aliases
+
+## BashHistory options
+## No duplicates in the history
+export HISTCONTROL=ignoredups
+export HISTSIZE=100000
+## Timestamp history
+export HISTTIMEFORMAT="%b %d %a %T "
+## Don't Overwrite. Append to bash history.
+shopt -s histappend
