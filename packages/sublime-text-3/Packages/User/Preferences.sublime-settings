@@ -1,0 +1,13 @@
+{
+	"animation_enabled": false,
+	"font_size": 11,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"rulers":
+	[
+		80
+	],
+	"trim_trailing_white_space_on_save": true
+}
