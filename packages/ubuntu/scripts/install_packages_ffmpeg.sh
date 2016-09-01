@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo add-apt-repository -y ppa:mc3man/mpv-tests
+sudo add-apt-repository -y ppa:jonathonf/ffmpeg-3
+
 if [ $1 == "install" ]; then
     sudo -E apt-get install -y ffmpeg mplayer mencoder mpv feh
 
