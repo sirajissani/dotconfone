@@ -3,6 +3,9 @@
 #No-arg => setup repo
 #No-arg => run apt-get
 function run_install_scripts() {
+    #Misc
+    ./scripts/install_packages_misc.sh $1
+
     #Google Chrome
     ./scripts/install_packages_chrome.sh $1
 
@@ -15,8 +18,8 @@ function run_install_scripts() {
     #Mono
     ./scripts/install_packages_gcc.sh $1
 
-    #Misc
-    ./scripts/install_packages_misc.sh $1
+    #ffmpeg and friends
+    ./scripts/install_packages_ffmpeg.sh $1
 }
 
 #Get sudo
