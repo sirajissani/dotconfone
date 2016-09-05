@@ -26,6 +26,7 @@ function run_install_scripts() {
 sudo touch install_packages.test
 sudo rm install_packages.test
 
+chmod a+x  */*.sh
 run_install_scripts setup
 sudo apt-get update
 run_install_scripts install
