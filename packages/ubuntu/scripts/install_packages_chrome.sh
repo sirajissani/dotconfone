@@ -6,5 +6,5 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 
 
 if [ $1 == "install" ]; then
-    sudo -E apt-get install google-chrome-beta
+    sudo -E apt-get install -y google-chrome-beta
 fi
