@@ -7,5 +7,5 @@ if [ $1 == "install" ]; then
     sudo -E apt-get install -y x11vnc
     sudo -E apt-get install -y vim vim-gnome vim-addon-manager
     sudo -E apt-get install -y exuberant-ctags
-    sudo -E apt-get install -y cscope-el
+    sudo -E apt-get install -y cscope
 fi
