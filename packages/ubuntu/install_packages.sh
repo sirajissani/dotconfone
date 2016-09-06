@@ -20,6 +20,9 @@ function run_install_scripts() {
 
     #ffmpeg and friends
     ./scripts/install_packages_ffmpeg.sh $1
+
+    #Misc linux tools
+    ./scripts/install_packages_misc_linux.sh $1
 }
 
 #Get sudo
