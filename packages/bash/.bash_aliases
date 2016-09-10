@@ -162,3 +162,6 @@ alias mpause='mpc -h 192.168.1.5 pause'
 alias mstop='mpc -h 192.168.1.5 stop'
 alias mpch='mpc -h 192.168.1.5'
 
+alias gdb='gdb -q'
+alias ssh='ssh -X'
+
