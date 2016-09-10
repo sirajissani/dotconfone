@@ -14,4 +14,7 @@ if [ $1 == "install" ]; then
     sudo -E apt-get install -y vim vim-gnome vim-addon-manager
     sudo -E apt-get install -y exuberant-ctags
     sudo -E apt-get install -y cscope
+    sudo -E apt-get install -y curl corkscrew
+    sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+    sudo chmod a+rx /usr/local/bin/youtube-dl
 fi
