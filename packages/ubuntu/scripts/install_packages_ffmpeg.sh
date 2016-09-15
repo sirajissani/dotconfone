@@ -6,7 +6,7 @@ if [ $1 == "install" ]; then
     sudo apt-get remove -y youtube-dl
     youtube-dl -U
     if [ $? -ne 0 ]; then
-    	sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
-    	sudo chmod a+rx /usr/local/bin/youtube-dl
+        sudo -E curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+        sudo chmod a+rx /usr/local/bin/youtube-dl
     fi
 fi
