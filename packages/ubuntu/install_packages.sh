@@ -23,6 +23,9 @@ function run_install_scripts() {
 
     #Misc linux tools
     ./scripts/install_packages_misc_linux.sh $1
+
+    #Fonts
+    ./scripts/install_packages_fonts.sh $1
 }
 
 #Get sudo

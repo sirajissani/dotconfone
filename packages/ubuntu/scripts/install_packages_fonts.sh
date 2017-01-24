@@ -7,5 +7,6 @@ if [ $1 == "install" ]; then
 	sudo mkdir -p /usr/local/share/fonts/mononoki/
 	sudo unzip -o mononoki.zip -d /usr/local/share/fonts/mononoki/
 	fc-cache -fv
+	rm mononoki.zip*
 fi
 
