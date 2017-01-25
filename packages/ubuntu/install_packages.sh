@@ -16,7 +16,7 @@ function run_install_scripts() {
     ./scripts/install_packages_gcc.sh $1
 
     #Mono
-    ./scripts/install_packages_gcc.sh $1
+    ./scripts/install_packages_mono.sh $1
 
     #ffmpeg and friends
     ./scripts/install_packages_ffmpeg.sh $1
