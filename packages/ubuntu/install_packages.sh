@@ -26,6 +26,12 @@ function run_install_scripts() {
 
     #Fonts
     ./scripts/install_packages_fonts.sh $1
+
+    #Cinnamon and I3
+    #./scripts/install_packages_desktop.sh $1
+
+    #Docker
+    #./scripts/install_packages_docker.sh $1
 }
 
 #Get sudo

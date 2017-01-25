@@ -16,4 +16,5 @@ if [ $1 == "install" ]; then
     sudo -E apt-get install -y cscope
     sudo -E apt-get install -y curl corkscrew
     sudo -E apt-get install -y tree htop tilda screen
+    sudo -E apt-get install -y ssh
 fi
