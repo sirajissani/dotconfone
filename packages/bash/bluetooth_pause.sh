@@ -16,6 +16,7 @@ fi
 
 dbus-monitor |grep -A1 -i mpris --line-buffered|grep -i string --line-buffered |grep -iv mpris --line-buffered |
 while read -r line; do
+    echo $line
     if [ "$line" == "string \"Play\"" ]; then
         xdotool windowfocus `xdotool search --name ".*$WINDOW_ID$"` && xdotool key space
     fi
