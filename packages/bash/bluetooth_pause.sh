@@ -9,6 +9,11 @@
 
 WINDOW_ID=$1
 
+if [ "$WINDOW_ID" == "" ]; then
+   echo "Argument missing"
+   exit
+fi
+
 dbus-monitor |grep -A1 -i mpris --line-buffered|grep -i string --line-buffered |grep -iv mpris --line-buffered |
 while read -r line; do
     if [ "$line" == "string \"Play\"" ]; then
