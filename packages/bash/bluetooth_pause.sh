@@ -17,18 +17,27 @@ fi
 dbus-monitor |grep -A1 -i mpris --line-buffered|grep -i string --line-buffered |grep -iv mpris --line-buffered |
 while read -r line; do
     echo $line
-    curwindow=`xdotool getwindowfocus`
     if [ "$line" == "string \"Play\"" ]; then
-        xdotool windowfocus `xdotool search --name ".*$WINDOW_ID$"` && xdotool key space
+        key_press=space
     fi
     if [ "$line" == "string \"Pause\"" ]; then
-        xdotool windowfocus `xdotool search --name ".*$WINDOW_ID$"` && xdotool key space
+        key_press=space
     fi
     if [ "$line" == "string \"Previous\"" ]; then
-        xdotool windowfocus `xdotool search --name ".*$WINDOW_ID$"` && xdotool key Left
+        key_press=Left
     fi
     if [ "$line" == "string \"Next\"" ]; then
-        xdotool windowfocus `xdotool search --name ".*$WINDOW_ID$"` && xdotool key Right
+        key_press=Right
+    fi
+    curwindow=`xdotool getwindowfocus`
+    input_window=`xdotool search --name ".*$WINDOW_ID$"`
+    xdotool windowfocus $input_window  2> /dev/null > /dev/null && xdotool key $key_press
+    if [ $? -ne 0 ]; then
+        echo $input_window
+        xdotool windowactivate $input_window
+        xdotool windowfocus $input_window
+        xdotool key $key_press
+        xdotool windowminimize $input_window
     fi
     xdotool windowfocus $curwindow
 done
