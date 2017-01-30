@@ -43,3 +43,4 @@ echo Bluetooth Card Index: $index
 pacmd set-card-profile $index off
 pacmd set-card-profile $index a2dp_sink
 
+pacmd set-default-sink $index
