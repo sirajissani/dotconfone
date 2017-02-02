@@ -61,8 +61,8 @@ while read -r line; do
     input_window=`xdotool search --name ".*$WINDOW_ID$"`
     xdotool windowfocus $input_window 2> /dev/null > /dev/null && command_handle $input_window $key_press $MODE
     if [ $? -ne 0 ]; then
-        xdotool windowactivate $1
-        xdotool windowfocus $1
+        xdotool windowactivate $input_window
+        xdotool windowfocus $input_window
         command_handle $input_window $key_press $MODE
         xdotool windowminimize $input_window
     fi
