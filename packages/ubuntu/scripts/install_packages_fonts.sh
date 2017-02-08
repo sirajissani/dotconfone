@@ -15,10 +15,11 @@ function install_font()
         #Download file
         wget $2 -O temp
 
-        #Check if it is zip
-        file temp |grep Zip
+        #Check if it is archive
+        file temp |grep -E "archive|compressed"
         if [ $? -eq 0 ]; then
-            sudo unzip -o temp -d $font_dir
+            #sudo unzip -o temp -d $font_dir
+            sudo engrampa temp -e $font_dir --force
             rm -f temp
         fi
 
@@ -32,6 +33,7 @@ function install_font()
         ls temp
         if [ $? -eq 0 ]; then
              echo "Unknown file, removing it"
+             file temp
              rm -f temp
         fi
 
