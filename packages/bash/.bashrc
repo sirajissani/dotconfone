@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -117,7 +117,8 @@ if ! shopt -oq posix; then
 fi
 
 xhost + > /dev/null
-export PS1="[\`printf %3d \$?\`]\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\W\$ "
+#export PS1="[\`printf %3d \$?\`]$PS1"
+export PS1="\[\033[01;33m\][\`printf %3d \$?\`]$PS1"
 
 source ~/.bash_aliases
 
@@ -129,3 +130,4 @@ export HISTSIZE=100000
 export HISTTIMEFORMAT="%b %d %a %T "
 ## Don't Overwrite. Append to bash history.
 shopt -s histappend
+export PYTHONSTARTUP=~/.pythonrc
