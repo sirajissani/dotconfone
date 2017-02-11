@@ -25,8 +25,8 @@ set ignorecase " ignores case of letters on searches
 set smartcase  " Override 'ignorecase' if the search pattern has upper case
 
 " Font
-set guifont=Monaco\ 11,Monospace\ 11
-set guifont=DejaVu\ Sans\ Mono\ 11,Monospace\ 11
+set guifont=Monaco\ 9,Monospace\ 9
+set guifont=DejaVu\ Sans\ Mono\ 9,Monospace\ 9
 
 " Tabs and Indentation
 set expandtab
@@ -75,7 +75,7 @@ if has('gui_running')
     set guioptions+=g
     set guioptions+=a
     set guioptions-=t
-    set guioptions+=m
+    set guioptions-=m
     set guioptions-=L
     set guioptions-=l
     set guioptions-=r
