@@ -27,7 +27,13 @@ function run_install_scripts() {
     #Fonts
     ./scripts/install_packages_fonts.sh $1
 
-    #Cinnamon and I3
+    #Wine and Notepad++
+    #./scripts/install_packages_wine.sh $1
+
+    #Java and webex
+    #./scripts/install_packages_java.sh $1
+
+    #I3
     #./scripts/install_packages_desktop.sh $1
 
     #Docker
