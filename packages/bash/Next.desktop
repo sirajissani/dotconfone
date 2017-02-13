@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Name=Next
+Icon= /usr/share/icons/matefaenza/actions/scalable/player_end.svg
+Exec=xdotool key XF86AudioNext
+Type=Application
+Terminal=false
+Comment=Generate xdotool key XF86AudioNext

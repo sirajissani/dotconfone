@@ -20,6 +20,13 @@ echo Bluetooth Card Index: $index
 pacmd set-card-profile $index off
 pacmd set-card-profile $index a2dp_sink
 
+sink_name=`pacmd list-sinks |grep bluez_sink |gawk -F"<|>" '{print $2}'`
+pacmd set-default-sink $sink_name
+
+if [ ! -z $1 ]; then
+	exit
+fi
+
 
 #Somehow second execution always works!!! So repeat everything
 

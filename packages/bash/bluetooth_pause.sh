@@ -13,6 +13,7 @@ MODE=$2
 if [ "$MODE" == "" ]; then
     MODE=none
 fi
+DUMMY_WINDOW=000000
 
 window_id=`xdotool search --name ".*$WINDOW_ID$"`
 window_name=`xdotool getwindowname $window_id`
@@ -20,20 +21,65 @@ echo Selecting window: $window_name
 echo Selecting mode: $MODE
 
 function jango_handler {
+    if [ "$1" == "$DUMMY_WINDOW" ]; then
+       echo "Cannot find window!!"
+       return
+    fi
     if [ "$2" == "space" ]; then
         xdotool key Ctrl+l && xdotool type "javascript:this._jp.ctrls.onPlayPause(0)" && xdotool key KP_Enter
     fi
     if [ "$2" == "Right" ]; then
         xdotool key Ctrl+l && xdotool type "javascript:this._jp.ctrls.onNext()" && xdotool key KP_Enter
     fi
+    if [ "$2" == "Left" ]; then
+        xdotool key Ctrl+r
+    fi
+}
+
+function youtube_handler {
+    if [ "$1" == "$DUMMY_WINDOW" ]; then
+       echo "Cannot find window!!"
+       return
+    fi
+    if [ "$2" == "space" ]; then
+        xdotool key Ctrl+l && xdotool type "javascript:document.getElementsByClassName(\"ytp-play-button\")[0].click()" && sleep 0.1 && xdotool key KP_Enter
+    fi
+    if [ "$2" == "Right" ]; then
+        xdotool key Ctrl+l && xdotool type "javascript:document.getElementsByClassName(\"ytp-next-button\")[0].click()" && sleep 0.1 && xdotool key KP_Enter
+    fi
+    if [ "$2" == "Left" ]; then
+        xdotool key Alt+Left
+    fi
+}
+
+function mpv_handler {
+    if [ "$2" == "space" ]; then
+      echo '{"command":["keypress", "p"]}' | socat - /tmp/mpvsocket
+    fi
+    if [ "$2" == "Right" ]; then
+      echo '{"command":["keypress", "Right"]}' | socat - /tmp/mpvsocket
+    fi
+    if [ "$2" == "Left" ]; then
+      echo '{"command":["keypress", "Left"]}' | socat - /tmp/mpvsocket
+    fi
 }
 
 function command_handle {
+    if [ "$3" == "yt" ]; then
+        youtube_handler $1 $key_press
+    fi
     if [ "$3" == "jango" ]; then
         jango_handler $1 $key_press
     fi
+    if [ "$3" == "mpv" ]; then
+        mpv_handler $1 $key_press
+    fi
     if [ "$3" == "none" ]; then
-        xdotool key $1 $key_press
+        if [ "$1" == "$DUMMY_WINDOW" ]; then
+           echo "Cannot find window!!"
+           return
+        fi
+        xdotool key $key_press
     fi
 }
 
@@ -59,6 +105,9 @@ while read -r line; do
     fi
     curwindow=`xdotool getwindowfocus`
     input_window=`xdotool search --name ".*$WINDOW_ID$"`
+    if [ "$input_window" == "" ]; then
+        input_window=$DUMMY_WINDOW
+    fi
     xdotool windowfocus $input_window 2> /dev/null > /dev/null && command_handle $input_window $key_press $MODE
     if [ $? -ne 0 ]; then
         xdotool windowactivate $input_window

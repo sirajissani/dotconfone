@@ -1,0 +1,22 @@
+new-session -s MY_SESSION -n MISC;
+
+new-window -n H-SPLIT;
+split -h;
+
+new-window -n V-SPLIT;
+split -v;
+
+new-window -n HV-SPLIT;
+split -h;
+split -v;
+
+new-window -n VH-SPLIT;
+split -v;
+split -h;
+
+new-window -n PLUS;
+split -hd;
+split -vd;
+split -vd -t 2;
+
+
