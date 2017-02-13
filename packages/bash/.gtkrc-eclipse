@@ -1,0 +1,5 @@
+style "eclipse" {
+  font_name = "mononoki 11"
+}
+class "GtkWidget" style "eclipse"
+

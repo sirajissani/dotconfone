@@ -40,7 +40,7 @@ export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 
 
 # make commands verbose
-alias rm='rm -v'
+alias rm='rm -Iv'
 alias cp='cp -v'
 alias mv='mv -v'
 alias mkdir='mkdir -p -v'
@@ -165,4 +165,8 @@ alias mpch='mpc -h 192.168.1.5'
 alias gdb='gdb -q'
 alias ssh='ssh -X'
 
-alias myeclipse='GTK2_RC_FILES=.gtkrc-eclipse ~/eclipse/eclipse'
+alias myeclipse='GTK2_RC_FILES=~/.gtkrc-eclipse ~/programs/eclipse/eclipse'
+alias mysource="find \`pwd\` -regex '.*\.[i,c,h][n,p]?[l,p]?$'"
+unalias vi
+alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
+
