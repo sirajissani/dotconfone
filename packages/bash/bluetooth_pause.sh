@@ -33,7 +33,7 @@ function command_handle {
         jango_handler $1 $key_press
     fi
     if [ "$3" == "none" ]; then
-        xdotool key $1 $key_press
+        xdotool key $key_press
     fi
 }
 
