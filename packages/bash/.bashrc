@@ -116,10 +116,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-xhost + > /dev/null
+xhost + > /dev/null 2> /dev/null
 #export PS1="[\`printf %3d \$?\`]$PS1"
-export PS1="\[\033[01;33m\][\`printf %3d \$?\`]\[\033[00m\]$PS1"
 export PS1="\[\033[01;35m\]\`echo \$(__git_ps1)\`\[\033[00m\]$PS1"
+export PS1="\[\033[01;33m\][\`printf %3d \$?\`]\[\033[00m\]$PS1"
 
 source ~/.bash_aliases
 

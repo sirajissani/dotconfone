@@ -25,8 +25,8 @@ set ignorecase " ignores case of letters on searches
 set smartcase  " Override 'ignorecase' if the search pattern has upper case
 
 " Font
-set guifont=mononoki\ 12, Monaco\ 11,Monospace\ 11
-set guifont=mononoki\ 12, Monaco\ 11, DejaVu\ Sans\ Mono\ 11,Monospace\ 11
+set guifont=mononoki\ 12,Monaco\ 11,Monospace\ 11
+set guifont=mononoki\ 12,Monaco\ 11,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
 
 " Tabs and Indentation
 set expandtab
@@ -219,3 +219,15 @@ let Tlist_WinWidth=28
 let Tlist_Exit_OnlyWindow=1
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Process_File_Always = 1
+
+
+map <C-Left> b
+map <C-Right> w
+if &term =~ '^screen'
+    " tmux will send xterm-style keys when its xterm-keys option is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
+
