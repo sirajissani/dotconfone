@@ -94,9 +94,10 @@ endif
 :map Y y$
 
 " Build cscope database and ctags with CTRL+F12
-:source ~/.vim/plugin/cscope_maps.vim
+":source ~/.vim/plugin/cscope_maps.vim
 map <C-F12> :!cscope_gen.sh; ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-set tags+=~/.vim/tags/cpp;./tags
+"set tags+=~/.vim/tags/cpp;./tags;~/tags
+set tags=~/tags
 
 " Dictionary for keyword i_C-X_C-K completion 
 set dictionary=/usr/share/dict/words
@@ -146,12 +147,12 @@ map <C-l> <C-W>l
 map <C-z> <C-W>_
 
 " Tabs
-:map <C-t> :tabnew<CR>
-:map <C-q> :tabclose<cr>
-:map <C-p> :tabprevious<cr>
-:map <C-n> :tabnext<cr>
-noremap <silent> <C-Left> :exe "silent! tabmove " . (tabpagenr() - 2)<CR>
-noremap <silent> <C-Right> :exe "silent! tabmove " . tabpagenr()<CR>
+":map <C-t> :tabnew<CR>
+":map <C-q> :tabclose<cr>
+":map <C-p> :tabprevious<cr>
+":map <C-n> :tabnext<cr>
+"noremap <silent> <C-Left> :exe "silent! tabmove " . (tabpagenr() - 2)<CR>
+"noremap <silent> <C-Right> :exe "silent! tabmove " . tabpagenr()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -182,11 +183,11 @@ endfunction
 autocmd Syntax cpp call EnhanceCppSyntax()
 
 "F9/10/11 -> Compile/Run/QuickfixWindow
-autocmd FileType  c,cpp   map <F9>  <esc>:w<CR>:!clear; echo Compiling %;<CR>:make %:r<CR>
-autocmd FileType  c,cpp   map <F10> <esc>:!clear; echo Running %; ./%:r<CR>
-autocmd FileType  java    map <F9>  <esc>:w<CR>:!clear; echo Compiling %; javac %<CR>
-autocmd FileType  java    map <F10> <esc>:!clear; echo Running %; java %<CR>
-autocmd FileType  python  map <F10> <esc>:!clear; echo Running %; python %<CR>
+"autocmd FileType  c,cpp   map <F9>  <esc>:w<CR>:!clear; echo Compiling %;<CR>:make %:r<CR>
+"autocmd FileType  c,cpp   map <F10> <esc>:!clear; echo Running %; ./%:r<CR>
+"autocmd FileType  java    map <F9>  <esc>:w<CR>:!clear; echo Compiling %; javac %<CR>
+"autocmd FileType  java    map <F10> <esc>:!clear; echo Running %; java %<CR>
+"autocmd FileType  python  map <F10> <esc>:!clear; echo Running %; python %<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -230,4 +231,13 @@ if &term =~ '^screen'
     execute "set <xRight>=\e[1;*C"
     execute "set <xLeft>=\e[1;*D"
 endif
+
+set shiftwidth=2  " Number of spaces to use for each step of (auto)indent
+set tabstop=2     " Number of spaces that a <Tab> in the file counts for.
+set softtabstop=2 " Backspace the proper number of spaces
+"set listchars=tab:➝\ ,space:·
+"set listchars=tab:»·,space:·
+set listchars=tab:»\ ,nbsp:\ 
+
+set list
 

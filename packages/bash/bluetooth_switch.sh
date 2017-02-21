@@ -20,6 +20,10 @@ echo Bluetooth Card Index: $index
 pacmd set-card-profile $index off
 pacmd set-card-profile $index a2dp_sink
 
+if [ ! -z $1 ]; then
+	exit
+fi
+
 
 #Somehow second execution always works!!! So repeat everything
 
