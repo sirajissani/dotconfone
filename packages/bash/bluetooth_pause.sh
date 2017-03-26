@@ -36,6 +36,22 @@ function jango_handler {
     fi
 }
 
+function youtube_handler {
+    if [ "$1" == "$DUMMY_WINDOW" ]; then
+       echo "Cannot find window!!"
+       return
+    fi
+    if [ "$2" == "space" ]; then
+        xdotool key Ctrl+l && xdotool type "javascript:document.getElementsByClassName(\"ytp-play-button\")[0].click()" && sleep 0.1 && xdotool key KP_Enter
+    fi
+    if [ "$2" == "Right" ]; then
+        xdotool key Ctrl+l && xdotool type "javascript:document.getElementsByClassName(\"ytp-next-button\")[0].click()" && sleep 0.1 && xdotool key KP_Enter
+    fi
+    if [ "$2" == "Left" ]; then
+        xdotool key Alt+Left
+    fi
+}
+
 function mpv_handler {
     if [ "$2" == "space" ]; then
       echo '{"command":["keypress", "p"]}' | socat - /tmp/mpvsocket
@@ -49,6 +65,9 @@ function mpv_handler {
 }
 
 function command_handle {
+    if [ "$3" == "yt" ]; then
+        youtube_handler $1 $key_press
+    fi
     if [ "$3" == "jango" ]; then
         jango_handler $1 $key_press
     fi

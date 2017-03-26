@@ -132,3 +132,7 @@ export HISTTIMEFORMAT="%b %d %a %T "
 ## Don't Overwrite. Append to bash history.
 shopt -s histappend
 export PYTHONSTARTUP=~/.pythonrc
+
+function rm() {
+  command rm $@ -I
+}
