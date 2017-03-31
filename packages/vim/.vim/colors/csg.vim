@@ -106,7 +106,7 @@ hi TabLineFill  ctermfg=black       ctermbg=white       cterm=NONE
 hi TabLineSel   ctermfg=white       ctermbg=black       cterm=NONE
 hi Cursor       ctermfg=black       ctermbg=white       cterm=NONE
 hi CursorIM     ctermfg=black       ctermbg=white       cterm=reverse
-hi CursorLine   ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi CursorLine   ctermfg=black       ctermbg=darkgreen   cterm=NONE
 hi CursorColumn ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi Visual       ctermfg=white       ctermbg=lightblue   cterm=NONE
 hi IncSearch    ctermfg=white       ctermbg=yellow      cterm=NONE
