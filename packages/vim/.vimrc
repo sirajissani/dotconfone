@@ -28,6 +28,8 @@ set smartcase  " Override 'ignorecase' if the search pattern has upper case
 set guifont=mononoki\ 12,Monaco\ 11,Monospace\ 11
 set guifont=mononoki\ 12,Monaco\ 11,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
 
+execute pathogen#infect()
+
 " Tabs and Indentation
 set expandtab
 set smarttab
