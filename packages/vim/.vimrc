@@ -110,7 +110,7 @@ set dictionary=/usr/share/dict/words
 set keywordprg=man\ -P\ more
 
 " AutoChange directory on switching buffers - This breaks ConqueGdb
-" autocmd BufEnter * lcd %:p:h 
+autocmd BufEnter * lcd %:p:h
 
 " Move more screenfuls at a time
 nnoremap <C-e> 3<C-e>
@@ -205,6 +205,7 @@ autocmd Syntax cpp call EnhanceCppSyntax()
 :let NERDTreeWinPos="left"
 :let NERDTreeWinSize=35
 nmap <silent> E :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 " Don't autostart
 "autocmd VimEnter * NERDTree
 "autocmd VimEnter * wincmd p
@@ -257,5 +258,13 @@ unmap <cr>
 imap <C-Right> <esc>ea
 imap <C-Left> <esc>bi
 
-autocmd FileType  c,cpp,h,hpp,cxx   setlocal cc=81 | setlocal shiftwidth=2| setlocal tabstop=2| setlocal softtabstop=2
+autocmd FileType  c,cpp,h,hpp,cxx   setlocal cc=81 | setlocal shiftwidth=2 | setlocal tabstop=2 | setlocal softtabstop=2 | set noic
+autocmd FileType  python            setlocal cc=81 | set noic
 autocmd FileType  conque_term       setlocal nolist
+
+let g:jedi#force_py_version=3
+
+nmap z <Plug>(easymotion-sn)
+map  t <Plug>(easymotion-next)
+map  T <Plug>(easymotion-prev)
+
