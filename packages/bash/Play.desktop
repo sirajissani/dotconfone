@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Name=Play
+Icon=/usr/share/icons/matefaenza/actions/scalable/player_play.svg
+Exec=xdotool key XF86AudioPlay
+Type=Application
+Terminal=false
+Comment=Generate xdotool key XF86AudioPlay

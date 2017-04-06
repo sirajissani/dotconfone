@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Name=Prev
+Icon=/usr/share/icons/matefaenza/actions/scalable/player_start.svg
+Exec=xdotool key XF86AudioPrev
+Type=Application
+Terminal=false
+Comment=Generate xdotool key XF86AudioPrev
