@@ -1,3 +1,6 @@
 [submodule "packages/vim/.vim/bundle/jedi-vim"]
 	path = packages/vim/.vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "packages/vim/.vim/bundle/vim-easymotion"]
+	path = packages/vim/.vim/bundle/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion
