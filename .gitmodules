@@ -16,3 +16,9 @@
 [submodule "packages/vim/.vim/bundle/Align"]
 	path = packages/vim/.vim/bundle/Align
 	url = https://github.com/vim-scripts/Align.git
+[submodule "packages/vim/.vim/bundle/FuzzyFinder"]
+	path = packages/vim/.vim/bundle/FuzzyFinder
+	url = https://github.com/vim-scripts/FuzzyFinder.git
+[submodule "packages/vim/.vim/bundle/vim-l9"]
+	path = packages/vim/.vim/bundle/vim-l9
+	url = https://github.com/eparreno/vim-l9.git
