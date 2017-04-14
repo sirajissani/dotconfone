@@ -262,7 +262,8 @@ autocmd FileType  c,cpp,h,hpp,cxx   setlocal cc=81 | setlocal shiftwidth=2 | set
 autocmd FileType  python            setlocal cc=81 | set noic
 autocmd FileType  conque_term       setlocal nolist
 
-let g:jedi#force_py_version=3
+let g:jedi#force_py_version = 3
+let g:neocomplete#enable_at_startup = 1
 
 nmap z <Plug>(easymotion-sn)
 map  t <Plug>(easymotion-next)
