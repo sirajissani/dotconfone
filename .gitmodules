@@ -13,3 +13,6 @@
 [submodule "packages/vim/.vim/bundle/Conque-GDB"]
 	path = packages/vim/.vim/bundle/Conque-GDB
 	url = https://github.com/vim-scripts/Conque-GDB.git
+[submodule "packages/vim/.vim/bundle/Align"]
+	path = packages/vim/.vim/bundle/Align
+	url = https://github.com/vim-scripts/Align.git
