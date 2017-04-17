@@ -14,7 +14,7 @@ CPCMD='cp -v'
 CPDIR='cp -vr'
 MKDIR='mkdir -p'
 
-USERHOME='/home/siraj'
+USERHOME='~'
 LOGFILE='./log'
 
 PKGWITHCONF=`cat packageswithconf.list`
