@@ -110,7 +110,7 @@ set dictionary=/usr/share/dict/words
 set keywordprg=man\ -P\ more
 
 " AutoChange directory on switching buffers - This breaks ConqueGdb
-autocmd BufEnter * lcd %:p:h
+autocmd BufEnter * if expand("%:p:h") != "Conque-Gdb.*gdb" | silent! lcd %:p:h
 
 " Move more screenfuls at a time
 nnoremap <C-e> 3<C-e>
@@ -265,7 +265,7 @@ autocmd FileType  conque_term       setlocal nolist
 let g:jedi#force_py_version = 3
 let g:neocomplete#enable_at_startup = 1
 
-nmap z <Plug>(easymotion-sn)
-map  t <Plug>(easymotion-next)
-map  T <Plug>(easymotion-prev)
+nmap <Leader>z <Plug>(easymotion-sn)
+map  <Leader>t <Plug>(easymotion-next)
+map  <Leader>T <Plug>(easymotion-prev)
 
