@@ -22,8 +22,8 @@ echo Selecting mode: $MODE
 
 function jango_handler {
     if [ "$1" == "$DUMMY_WINDOW" ]; then
-       echo "Cannot find window!!"
-       return
+        echo "Cannot find window!!"
+        return
     fi
     if [ "$2" == "space" ]; then
         xdotool key Ctrl+l && xdotool type "javascript:this._jp.ctrls.onPlayPause(0)" && xdotool key KP_Enter
@@ -38,8 +38,8 @@ function jango_handler {
 
 function youtube_handler {
     if [ "$1" == "$DUMMY_WINDOW" ]; then
-       echo "Cannot find window!!"
-       return
+        echo "Cannot find window!!"
+        return
     fi
     if [ "$2" == "space" ]; then
         xdotool key Ctrl+l && xdotool type "javascript:document.getElementsByClassName(\"ytp-play-button\")[0].click()" && sleep 0.1 && xdotool key KP_Enter
@@ -54,14 +54,31 @@ function youtube_handler {
 
 function mpv_handler {
     if [ "$2" == "space" ]; then
-      echo '{"command":["keypress", "p"]}' | socat - /tmp/mpvsocket
+        echo '{"command":["keypress", "p"]}' | socat - /tmp/mpvsocket
     fi
     if [ "$2" == "Right" ]; then
-      echo '{"command":["keypress", "Right"]}' | socat - /tmp/mpvsocket
+        echo '{"command":["keypress", "Right"]}' | socat - /tmp/mpvsocket
     fi
     if [ "$2" == "Left" ]; then
-      echo '{"command":["keypress", "Left"]}' | socat - /tmp/mpvsocket
+        echo '{"command":["keypress", "Left"]}' | socat - /tmp/mpvsocket
     fi
+}
+
+function foobar_handler {
+    #Needs full path. ~ does not work
+    FOOBAR_EXE="/home/csghone/Desktop/foobar2000/foobar2000.exe"
+    if [ "$2" == "space" ]; then
+        wine $FOOBAR_EXE /playpause 2> /dev/null
+    fi
+    if [ "$2" == "Right" ]; then
+        wine $FOOBAR_EXE /stop 2> /dev/null
+        wine $FOOBAR_EXE /playpause 2> /dev/null
+        wine $FOOBAR_EXE /next 2> /dev/null
+    fi
+    if [ "$2" == "Left" ]; then
+        wine $FOOBAR_EXE /prev 2> /dev/null
+    fi
+
 }
 
 function command_handle {
@@ -74,21 +91,34 @@ function command_handle {
     if [ "$3" == "mpv" ]; then
         mpv_handler $1 $key_press
     fi
+    if [ "$3" == "foobar" ]; then
+        foobar_handler $1 $key_press
+    fi
     if [ "$3" == "none" ]; then
         if [ "$1" == "$DUMMY_WINDOW" ]; then
-           echo "Cannot find window!!"
-           return
+            echo "Cannot find window!!"
+            return
         fi
         xdotool key $key_press
     fi
 }
 
 if [ "$WINDOW_ID" == "" ]; then
-   echo "Argument missing"
-   exit
+    echo "Argument missing"
+    exit
 fi
 
-dbus-monitor |grep -A1 -i mpris --line-buffered|grep -i string --line-buffered |grep -iv mpris --line-buffered |
+#This is needed for TMUX/BYOBU
+DBUS_ID=`echo $DBUS_SESSION_BUS_ADDRESS |grep -o "/tmp/[^,]*"`
+lsof -c dbus-daemon | grep $DBUS_ID > /dev/null
+if [ $? -ne 0 ]; then
+    DBUS_LAUNCHER="mate-settings-daemon"
+    echo Connecting to DBUS session of $DBUS_LAUNCHER
+    echo Change in script if needed!
+    DBUS_LAUNCHER_PID=`pidof $DBUS_LAUNCHER`
+    export `cat /proc/$DBUS_LAUNCHER_PID/environ | grep -z DBUS_SESSION_BUS_ADDRESS`
+fi
+dbus-monitor --session |grep -A1 -i mpris --line-buffered|grep -i string --line-buffered |grep -iv mpris --line-buffered |
 while read -r line; do
     #echo $line
     if [ "$line" == "string \"Play\"" ]; then
@@ -110,11 +140,12 @@ while read -r line; do
     fi
     xdotool windowfocus $input_window 2> /dev/null > /dev/null && command_handle $input_window $key_press $MODE
     if [ $? -ne 0 ]; then
-        xdotool windowactivate $input_window
-        xdotool windowfocus $input_window
-        command_handle $input_window $key_press $MODE
-        xdotool windowminimize $input_window
+        xdotool windowactivate $input_window 2> /dev/null
+        xdotool windowfocus $input_window 2> /dev/null
+        command_handle $input_window $key_press $MODE 2> /dev/null
+        xdotool windowminimize $input_window 2> /dev/null
     fi
+    xdotool windowactivate $curwindow 2> /dev/null
     xdotool windowfocus $curwindow
 done
 
