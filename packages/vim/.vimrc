@@ -106,6 +106,10 @@ if file_readable(cscope_file)
 endif
 set tags=~/tags
 set cscopequickfix=a-,s-,c-,d-,i-,t-,e-
+"Use following to map C-] to cstag
+"set cscopetag
+"Alternately use C-\ for :cstag and keep C-] for :tag
+map <C-\> <Esc>:cstag <C-r><C-W><CR>
 
 " Dictionary for keyword i_C-X_C-K completion
 set dictionary=/usr/share/dict/words
