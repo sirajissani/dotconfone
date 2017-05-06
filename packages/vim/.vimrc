@@ -29,6 +29,7 @@ set guifont=mononoki\ 12,Monaco\ 11,Monospace\ 11
 set guifont=mononoki\ 12,Monaco\ 11,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
 
 execute pathogen#infect()
+execute pathogen#helptags()
 
 " Tabs and Indentation
 set expandtab
@@ -52,7 +53,7 @@ filetype plugin on
 set fileencodings=   " don't do any encoding conversion (otherwise munges binary files)
 syntax on            " Syntax Highlighting
 "set t_Co=256        " xterm
-"set background="dark" 
+"set background="dark"
 "colorscheme torte
 
 " Completion
@@ -98,19 +99,21 @@ endif
 ":source ~/.vim/plugin/cscope_maps.vim
 "map <C-F12> :!cscope_gen.sh; ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "set tags+=~/.vim/tags/cpp;./tags
-if filereadable("~/cscope.out")
+let cscope_file=$HOME."/cscope.out"
+if file_readable(cscope_file)
   cs reset
   cs add ~/cscope.out
 endif
 set tags=~/tags
+set cscopequickfix=a-,s-,c-,d-,i-,t-,e-
 
-" Dictionary for keyword i_C-X_C-K completion 
+" Dictionary for keyword i_C-X_C-K completion
 set dictionary=/usr/share/dict/words
 " For manpages
 set keywordprg=man\ -P\ more
 
-" AutoChange directory on switching buffers - This breaks ConqueGdb
-autocmd BufEnter * if expand("%:p:h") != "Conque-Gdb.*gdb" | silent! lcd %:p:h
+" AutoChange directory on switching buffers - fixed to avoid ConqueGdb failure
+autocmd BufEnter * if expand("%:p:h") !~ 'Conque-Gdb.*gdb' | silent! lcd %:p:h
 
 " Move more screenfuls at a time
 nnoremap <C-e> 3<C-e>
@@ -151,7 +154,7 @@ map <C-W><C-Right> <C-W>l
 " Resize window
 map <C-z> <C-W><
 map <C-x> <C-W>>
-map <C-m> <C-W>+
+map <C-b> <C-W>+
 map <C-n> <C-W>-
 
 " Tabs
@@ -189,6 +192,9 @@ function! EnhanceCppSyntax()
   hi def link cppFuncDef Special
 endfunction
 autocmd Syntax cpp call EnhanceCppSyntax()
+
+autocmd FileType python nnoremap <buffer> [[ ?^class\\|^\s*def<CR>
+autocmd FileType python nnoremap <buffer> ]] /^class\\|^\s*def<CR>
 
 "F9/10/11 -> Compile/Run/QuickfixWindow
 "autocmd FileType  c,cpp   map <F9>  <esc>:w<CR>:!clear; echo Compiling %;<CR>:make %:r<CR>
@@ -254,7 +260,12 @@ colorscheme csg
 "colorscheme spring-night
 "colorscheme wombat256
 
-unmap <cr>
+"Hack for color consistency
+if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'mate-terminal'
+    set t_Co=256
+endif
+
+"unmap <cr>
 imap <C-Right> <esc>ea
 imap <C-Left> <esc>bi
 
@@ -266,6 +277,7 @@ let g:jedi#force_py_version = 3
 let g:neocomplete#enable_at_startup = 1
 
 nmap <Leader>z <Plug>(easymotion-sn)
-map  <Leader>t <Plug>(easymotion-next)
-map  <Leader>T <Plug>(easymotion-prev)
+nmap <Leader>t <Plug>(easymotion-next)
+nmap <Leader>T <Plug>(easymotion-prev)
+
 

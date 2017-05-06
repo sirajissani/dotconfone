@@ -14,12 +14,12 @@ else
   count_old=0
 fi
 
-cat FileList.tmp                                                        | \
-    egrep '\.(c|cc|cpp|h|hh|hpp|i|inc|inl|l|ll|lpp|y|yy|ypp|gp|pl|tcl)$'| \
-    egrep -v '_(lexer|parser|kwds|msg|message)\.(cc|hh)$'               | \
-    egrep -v '_(lexer|parser|kwds|msg|message)\.(cpp|hpp)$'             | \
-    egrep -vw '(2rdparty|temp|Debug|Release|workspace)'                 | \
-    egrep -vw '(exanic|exasock|release)'                                | \
+cat FileList.tmp                                                           | \
+    egrep '\.(c|cc|cpp|h|hh|hpp|i|inc|inl|l|ll|lpp|y|yy|ypp|gp|pl|tcl|py)$'| \
+    egrep -v '_(lexer|parser|kwds|msg|message)\.(cc|hh)$'                  | \
+    egrep -v '_(lexer|parser|kwds|msg|message)\.(cpp|hpp)$'                | \
+    egrep -vw '(3rdparty|2rdparty|temp|Debug|Release|workspace)'           | \
+    egrep -vw '(exanic|exasock|release)'                                   | \
     sort -fu > FileList
 
 rm -rf FileList.tmp
@@ -35,10 +35,11 @@ if [ $count_new -ne 0 ]; then
   echo "Updating ctags ..."
   #ctags -d -t -T -w `cat FileList` #>& /dev/null
   #ctags `cat FileList` #>& /dev/null
-  ctags -R --c++-kinds=+p --fields=+iaS --extra=+q `cat FileList` 2> /dev/null > /dev/null
+  ctags -R --python-kinds=-i --c++-kinds=+p --fields=+iaS --extra=+q `cat FileList` 2> /dev/null > /dev/null
 
   echo "You are cleared for take-off"
 fi
 
+rm FileList
 mv tags ~/
 mv cscope.out ~/
