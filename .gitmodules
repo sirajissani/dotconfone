@@ -34,3 +34,6 @@
 [submodule "packages/vim/.vim/bundle/matchit.zip"]
 	path = packages/vim/.vim/bundle/matchit.zip
 	url = https://github.com/benjifisher/matchit.zip
+[submodule "packages/i3/i3session"]
+	path = packages/i3/i3session
+	url = https://github.com/csghone/i3session

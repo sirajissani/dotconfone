@@ -1,0 +1,16 @@
+# file /etc/systemd/system/wakelock.service
+# sudo systemctl enable wakelock.service
+# sudo systemctl daemon-reload
+
+[Unit]
+Description=Lock the screen on resume from suspend
+
+[Service]
+User=csghone
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/i3lock -c 330033
+
+[Install]
+WantedBy=sleep.target
+WantedBy=suspend.target

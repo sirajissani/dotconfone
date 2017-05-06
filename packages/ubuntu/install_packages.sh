@@ -33,7 +33,7 @@ function run_install_scripts() {
     #Java and webex
     #./scripts/install_packages_java.sh $1
 
-    #Cinnamon and I3
+    #I3
     #./scripts/install_packages_desktop.sh $1
 
     #Docker
