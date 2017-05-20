@@ -6,7 +6,9 @@
 
 set background=dark
 hi clear
-colorscheme default
+if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'mate-terminal'
+    set t_Co=256
+endif
 let g:colors_name = "noblesse"
 
 " GUI
@@ -19,7 +21,7 @@ highlight LineNr            guifg=Grey30        guibg=Black         gui=NONE
 highlight VertSplit         guifg=Grey60        guibg=Grey20        gui=NONE 
 highlight Cursor            guifg=Black	        guibg=#20a020       gui=NONE
 highlight lCursor           guifg=Black	        guibg=#20a020       gui=NONE
-highlight CursorLine                            guibg=Grey15        gui=NONE
+highlight CursorLine        guifg=Grey10        guibg=Grey15        gui=NONE
 highlight Folded            guifg=DarkCyan      guibg=Grey20        gui=italic
 
 highlight Special           guifg=Orange                            gui=NONE
@@ -43,15 +45,20 @@ hi cCppBracket  guifg=DarkCyan
 hi cCppParen    guifg=Orange
 
 " Console
-highlight Normal     ctermfg=LightGrey	ctermbg=Black
-highlight Search     ctermfg=Black	ctermbg=Red	cterm=NONE
-highlight Visual					cterm=reverse
-highlight Cursor     ctermfg=Black	ctermbg=Green	cterm=bold
-highlight StatusLine ctermfg=blue	ctermbg=white
-highlight Special    ctermfg=Brown
-highlight Comment    ctermfg=Blue
-highlight Statement  ctermfg=Yellow			cterm=NONE
-highlight Type						cterm=NONE
+highlight Normal    ctermfg=LightGrey   ctermbg=Black
+highlight Search    ctermfg=Black       ctermbg=Red     cterm=NONE
+highlight Visual    ctermfg=DarkBlue     ctermbg=Grey   cterm=NONE
+highlight LineNr    ctermfg=DarkGrey    ctermbg=NONE    cterm=none
+highlight Cursor    ctermfg=Black       ctermbg=Green   cterm=none
+highlight CursorLine  ctermfg=black     ctermbg=Black   cterm=NONE
+highlight StatusLine  ctermfg=Black     ctermbg=DarkCyan    cterm=NONE
+highlight StatusLineNC  ctermfg=White   ctermbg=DarkGrey    cterm=NONE
+highlight Special   ctermfg=Brown
+highlight Comment   ctermfg=Grey        ctermbg=Black   cterm=italic
+highlight PreProc   ctermfg=DarkCyan        ctermbg=Black   cterm=NONE
+highlight Statement ctermfg=DarkYellow      cterm=NONE
+highlight Type      ctermfg=Green   cterm=NONE
+highlight Constant  ctermfg=Magenta                           cterm=NONE
 
 " only for vim 5
 if has("unix")
