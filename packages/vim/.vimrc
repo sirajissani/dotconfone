@@ -151,7 +151,7 @@ map <C-W><C-Right> <C-W>l
 "map <C-z> <C-W>_
 " Resize window
 map <C-z> <C-W><
-map <C-x> <C-W>>
+map <C-s> <C-W>>
 map <C-b> <C-W>+
 map <C-n> <C-W>-
 
@@ -256,10 +256,8 @@ if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'mate-terminal'
     set t_Co=256
 endif
 
-colorscheme csg
-if has('gui_running')
-    colorscheme noblesse_redux
-endif
+
+colorscheme noblesse_redux
 "colorscheme csg
 "colorscheme candycode
 "colorscheme asu1dark
