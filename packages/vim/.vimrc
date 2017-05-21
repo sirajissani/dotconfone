@@ -25,8 +25,8 @@ set ignorecase " ignores case of letters on searches
 set smartcase  " Override 'ignorecase' if the search pattern has upper case
 
 " Font
-set guifont=mononoki\ 12,Monaco\ 11,Monospace\ 11
-set guifont=mononoki\ 12,Monaco\ 11,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
+set guifont=mononoki\ 10,Monaco\ 11,Monospace\ 11
+set guifont=mononoki\ 10,Monaco\ 11,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
 
 execute pathogen#infect()
 execute pathogen#helptags()
@@ -52,9 +52,7 @@ filetype indent on   " Filetype specific indentation
 filetype plugin on
 set fileencodings=   " don't do any encoding conversion (otherwise munges binary files)
 syntax on            " Syntax Highlighting
-"set t_Co=256        " xterm
-"set background="dark"
-"colorscheme torte
+" colorscheme selection is below
 
 " Completion
 set wildmode=longest,full
@@ -257,17 +255,21 @@ set listchars=tab:»\ ,nbsp:\ ,trail:»
 
 set list
 
+"Hack for color consistency
+if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'mate-terminal'
+    set t_Co=256
+endif
+
 colorscheme csg
+if has('gui_running')
+    colorscheme noblesse_redux
+endif
+"colorscheme csg
 "colorscheme candycode
 "colorscheme asu1dark
 "colorscheme torte
 "colorscheme spring-night
 "colorscheme wombat256
-
-"Hack for color consistency
-if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'mate-terminal'
-    set t_Co=256
-endif
 
 "unmap <cr>
 imap <C-Right> <esc>ea
