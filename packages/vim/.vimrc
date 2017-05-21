@@ -25,8 +25,8 @@ set ignorecase " ignores case of letters on searches
 set smartcase  " Override 'ignorecase' if the search pattern has upper case
 
 " Font
-set guifont=mononoki\ 12,Monaco\ 11,Monospace\ 11
-set guifont=mononoki\ 12,Monaco\ 11,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
+set guifont=mononoki\ 10,Monaco\ 11,Monospace\ 11
+set guifont=mononoki\ 10,Monaco\ 11,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
 
 execute pathogen#infect()
 execute pathogen#helptags()
@@ -256,8 +256,10 @@ if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'mate-terminal'
     set t_Co=256
 endif
 
-
-colorscheme noblesse
+colorscheme csg
+if has('gui_running')
+    colorscheme noblesse_redux
+endif
 "colorscheme csg
 "colorscheme candycode
 "colorscheme asu1dark
