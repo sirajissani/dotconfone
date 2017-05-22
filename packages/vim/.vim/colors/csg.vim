@@ -69,14 +69,6 @@ hi Error        guifg=#ffffff guibg=#ff0000 gui=NONE
 hi Todo         guifg=#ffffff guibg=#ee7700 gui=bold
 hi Underlined   guifg=#80a0ff guibg=NONE    gui=underline
 
-hi Statement    term=BOLD cterm=BOLD ctermfg=DarkBlue    ctermbg=Black
-hi Special      term=NONE cterm=NONE ctermfg=DarkGreen   ctermbg=Black
-hi SpecialChar  term=NONE cterm=NONE ctermfg=Cyan        ctermbg=Black
-hi Comment      term=NONE cterm=NONE ctermfg=DarkGray    ctermbg=Black
-hi Preproc      term=NONE cterm=NONE ctermfg=DarkGreen   ctermbg=Black
-hi Type         term=NONE cterm=NONE ctermfg=DarkMagenta ctermbg=Black
-hi Identifier   term=NONE cterm=NONE ctermfg=Cyan        ctermbg=Black
-
 hi Normal       ctermfg=white       ctermbg=black       cterm=NONE
 hi Folded       ctermfg=lightgray   ctermbg=black       cterm=underline
 hi LineNr       ctermfg=darkgray    ctermbg=NONE        cterm=NONE
@@ -118,18 +110,18 @@ hi Question     ctermfg=green       ctermbg=NONE        cterm=NONE
 hi MoreMsg      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi ErrorMsg     ctermfg=white       ctermbg=red         cterm=bold
 hi WarningMsg   ctermfg=yellow      ctermbg=NONE        cterm=bold
-hi Comment      ctermfg=brown       ctermbg=NONE        cterm=NONE
+hi Comment      ctermfg=darkgreen   ctermbg=NONE        cterm=NONE
 hi Constant     ctermfg=66CC00      ctermbg=NONE        cterm=NONE
 hi Boolean      ctermfg=red         ctermbg=NONE        cterm=bold
 hi Identifier   ctermfg=yellow      ctermbg=NONE        cterm=NONE
 hi Statement    ctermfg=green       ctermbg=NONE        cterm=bold
-hi PreProc      ctermfg=darkmagenta ctermbg=NONE        cterm=NONE
+hi PreProc      ctermfg=magenta     ctermbg=NONE        cterm=NONE
 hi Type         ctermfg=lightblue   ctermbg=NONE        cterm=bold
-hi Special      ctermfg=lightgray   ctermbg=NONE        cterm=bold
+hi Special      ctermfg=lightcyan   ctermbg=NONE        cterm=bold
+hi SpecialChar  ctermfg=lightcyan   ctermbg=NONE        cterm=NONE
 hi Ignore       ctermfg=darkgray    ctermbg=NONE        cterm=NONE
 hi Error        ctermfg=white       ctermbg=red         cterm=NONE
 hi Todo         ctermfg=black       ctermbg=yellow      cterm=bold
 hi Underlined   ctermfg=NONE        ctermbg=NONE        cterm=underline   term=underline
-
 
 "let &cpo = save_cpo

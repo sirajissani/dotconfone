@@ -104,6 +104,10 @@ if file_readable(cscope_file)
 endif
 set tags=~/tags
 set cscopequickfix=a-,s-,c-,d-,i-,t-,e-
+"Use following to map C-] to cstag
+"set cscopetag
+"Alternately use C-\ for :cstag and keep C-] for :tag
+map <C-\> <Esc>:cstag <C-r><C-W><CR>
 
 " Dictionary for keyword i_C-X_C-K completion
 set dictionary=/usr/share/dict/words
@@ -256,7 +260,6 @@ if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'mate-terminal'
     set t_Co=256
 endif
 
-
 colorscheme noblesse_redux
 "colorscheme csg
 "colorscheme candycode
@@ -279,5 +282,6 @@ let g:neocomplete#enable_at_startup = 1
 nmap <Leader>z <Plug>(easymotion-sn)
 nmap <Leader>t <Plug>(easymotion-next)
 nmap <Leader>T <Plug>(easymotion-prev)
+nmap <Leader><C-]> :TagbarToggle<CR>
 
 
