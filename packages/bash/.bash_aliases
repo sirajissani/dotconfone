@@ -151,10 +151,6 @@ alias info='info --vi-keys'
 #wireless
 alias wfind='sudo iwlist eth0 scan | grep "(ESSID|Quality)"'
 
-#Common places of interest
-alias ipmsw='cd /home/siraj/Documents/Office/GWProj/IPM_AppSM/IPM/appsw/src'
-alias ipmswusb='cd /media/ANGSTROM/Siraj/Office/GWproj/IPM/Software/IPM_AppSM/IPM/appsw/src/'
-
 #mpd mpc
 alias mpdinit='sudo /etc/init.d/mpd'
 alias mplay='mpc -h 192.168.1.5 play'
@@ -163,10 +159,24 @@ alias mstop='mpc -h 192.168.1.5 stop'
 alias mpch='mpc -h 192.168.1.5'
 
 alias gdb='gdb -q'
-alias ssh='ssh -X'
 
 alias myeclipse='GTK2_RC_FILES=~/.gtkrc-eclipse ~/programs/eclipse/eclipse'
 alias mysource="find \`pwd\` -regex '.*\.[i,c,h][n,p]?[l,p]?$'"
 unalias vi
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
+
+function connect_smarc_board() {
+    case $# in
+        0 ) cmd="ssh root@192.168.151.57";;
+        1 ) cmd="ssh root@192.168.151.$1";;
+        2 ) cmd="ssh root@192.168.$1.$2";;
+        3 ) cmd="ssh root@192.$1.$2.$3";;
+        4 ) cmd="ssh root@$1.$2.$3.$4";;
+    esac
+    echo $cmd
+    $cmd
+}
+
+#Common places of interest
+alias smarc=connect_smarc_board
 
