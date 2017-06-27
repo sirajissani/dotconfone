@@ -4,11 +4,8 @@
 " grey on black
 " optimized for TFT panels
 
-set background=dark
 hi clear
-if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'mate-terminal'
-    set t_Co=256
-endif
+set background=dark
 let g:colors_name = "noblesse"
 
 " GUI
@@ -47,27 +44,17 @@ hi cCppParen    guifg=Orange
 " Console
 highlight Normal    ctermfg=LightGrey   ctermbg=Black
 highlight Search    ctermfg=Black       ctermbg=Red     cterm=NONE
-highlight Visual    ctermfg=DarkBlue     ctermbg=Grey   cterm=NONE
-highlight LineNr    ctermfg=DarkGrey    ctermbg=NONE    cterm=none
+highlight Visual    ctermfg=DarkBlue     ctermbg=DarkGrey   cterm=NONE
+highlight LineNr    ctermfg=DarkGrey    ctermbg=Black   cterm=NONE
 highlight Cursor    ctermfg=Black       ctermbg=Green   cterm=none
 highlight CursorLine  ctermfg=black     ctermbg=Black   cterm=NONE
-highlight StatusLine  ctermfg=Black     ctermbg=DarkCyan    cterm=NONE
-highlight StatusLineNC  ctermfg=White   ctermbg=DarkGrey    cterm=NONE
 highlight Special   ctermfg=Brown
 highlight Comment   ctermfg=Grey        ctermbg=Black   cterm=italic
 highlight PreProc   ctermfg=DarkCyan        ctermbg=Black   cterm=NONE
 highlight Statement ctermfg=DarkYellow      cterm=NONE
-highlight Type      ctermfg=Green   cterm=NONE
-highlight Constant  ctermfg=Magenta                           cterm=NONE
+highlight Type      ctermfg=Green   ctermbg=Black cterm=NONE
+highlight Constant  ctermfg=Magenta ctermbg=Black cterm=NONE
 
-" only for vim 5
-if has("unix")
-  if v:version<600
-    highlight Normal  ctermfg=Grey	ctermbg=Black	cterm=NONE	guifg=Grey80      guibg=Black	gui=NONE
-    highlight Search  ctermfg=Black	ctermbg=Red	cterm=bold	guifg=Black       guibg=Red	gui=bold
-    highlight Visual  ctermfg=Black	ctermbg=yellow	cterm=bold	guifg=#404040			gui=bold
-    highlight Special ctermfg=LightBlue			cterm=NONE	guifg=LightBlue			gui=NONE
-    highlight Comment ctermfg=Cyan			cterm=NONE	guifg=LightBlue			gui=NONE
-  endif
-endif
+highlight StatusLine  ctermfg=Black     ctermbg=DarkCyan    cterm=NONE
+highlight StatusLineNC  ctermfg=LightGray   ctermbg=DarkGray    cterm=italic
 
