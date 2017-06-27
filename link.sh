@@ -30,12 +30,12 @@
 
 function backup_and_link() {
 	if [ ! -e $1 ] || [ ! -h $1 ]; then
-		echo "  Backing up $1"
+		echo "  Backing up  $1 --> $1.bak"
 		mv $1 $1.bak
-		echo "  Linking $1 --> $2"
+		echo "  Linking     $1 --> $2"
 		ln -s $2 $1
 	else
-		echo "  Doing nothing about $1"
+		echo "  Skipping    $1"
 	fi
 }
 
