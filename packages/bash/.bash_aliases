@@ -12,7 +12,9 @@ fi
 alias pgrep='pgrep -fl'
 
 #Use Extended Regular Expressions!
-alias sed='sed -r'
+# makes auto-completion of bash messy in some cases!
+# Commenting till we find a work-around
+#alias sed='sed -r'
 
 # some more ls aliases
 alias ll="ls -CFlh -Itags -I'cscope*'"
