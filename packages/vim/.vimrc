@@ -92,7 +92,7 @@ endif
 " Miscellaneous Tweaks
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Y yanks till the end of the line
-":map Y y$
+:map Y y$
 
 " Build cscope database and ctags with CTRL+F12
 ":source ~/.vim/plugin/cscope_maps.vim
