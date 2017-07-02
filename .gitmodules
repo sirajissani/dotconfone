@@ -13,15 +13,19 @@
 [submodule "packages/vim/.vim/bundle/Conque-GDB"]
 	path = packages/vim/.vim/bundle/Conque-GDB
 	url = https://github.com/vim-scripts/Conque-GDB.git
+	ignore = untracked
 [submodule "packages/vim/.vim/bundle/Align"]
 	path = packages/vim/.vim/bundle/Align
 	url = https://github.com/vim-scripts/Align.git
+	ignore = untracked
 [submodule "packages/vim/.vim/bundle/FuzzyFinder"]
 	path = packages/vim/.vim/bundle/FuzzyFinder
 	url = https://github.com/vim-scripts/FuzzyFinder.git
+	ignore = untracked
 [submodule "packages/vim/.vim/bundle/vim-l9"]
 	path = packages/vim/.vim/bundle/vim-l9
 	url = https://github.com/eparreno/vim-l9.git
+	ignore = untracked
 [submodule "packages/vim/.vim/bundle/ctrlp.vim"]
 	path = packages/vim/.vim/bundle/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
@@ -31,6 +35,7 @@
 [submodule "packages/vim/.vim/bundle/vim-r-plugin2"]
 	path = packages/vim/.vim/bundle/vim-r-plugin2
 	url = https://github.com/jimmyharris/vim-r-plugin2.git
+	ignore = untracked
 [submodule "packages/vim/.vim/bundle/matchit.zip"]
 	path = packages/vim/.vim/bundle/matchit.zip
 	url = https://github.com/benjifisher/matchit.zip
