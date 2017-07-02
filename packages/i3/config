@@ -43,27 +43,29 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-#bindsym $mod+j focus left
-#bindsym $mod+k focus down
-#bindsym $mod+l focus up
+#bindsym $mod+j         focus left
+#bindsym $mod+k         focus down
+#bindsym $mod+l         focus up
 #bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+Left      focus left
+bindsym $mod+Down      focus down
+bindsym $mod+Up        focus up
+bindsym $mod+Right     focus right
+bindsym Mod1+Tab       focus right
+bindsym Mod1+Shift+Tab focus left
 
 # move focused window
-#bindsym $mod+Shift+j move left
-#bindsym $mod+Shift+k move down
-#bindsym $mod+Shift+l move up
+#bindsym $mod+Shift+j         move left
+#bindsym $mod+Shift+k         move down
+#bindsym $mod+Shift+l         move up
 #bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
@@ -93,22 +95,24 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1             workspace 1
+bindsym $mod+2             workspace 2
+bindsym $mod+3             workspace 3
+bindsym $mod+4             workspace 4
+bindsym $mod+5             workspace 5
+bindsym $mod+6             workspace 6
+bindsym $mod+7             workspace 7
+bindsym $mod+8             workspace 8
+bindsym $mod+9             workspace 9
+bindsym $mod+0             workspace 10
 bindsym $mod+Control+Right workspace next
-bindsym $mod+Control+Left workspace prev
-bindsym $mod+Next workspace next
-bindsym $mod+Prior workspace prev
-bindsym Control+Next workspace next
-bindsym Control+Prior workspace prev
+bindsym $mod+Control+Left  workspace prev
+bindsym $mod+Next          workspace next
+bindsym $mod+Prior         workspace prev
+bindsym Control+Next       workspace next
+bindsym Control+Prior      workspace prev
+bindsym $mod+Home          workspace back_and_forth
+bindsym $mod+End           workspace back_and_forth
 bindsym $mod+Control+Up exec python3 ~/.config/i3/move_all.py
 
 # move focused container to workspace
@@ -166,17 +170,17 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` toggle # mute sound
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` 100%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` -5%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` toggle
+bindsym XF86AudioMicMute     exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` 100%
 
 # Move windows across workspaces
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessUp   exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Lock screen
@@ -194,7 +198,7 @@ bar {
         position top
 }
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 for_window [class=".*alculator.*"] floating enable
 
 client.focused #FF0000 #FF0000 #FFFFFF #0000FF
@@ -204,6 +208,7 @@ client.focused #FF0000 #FF0000 #FFFFFF #0000FF
 exec --no-startup-id compton --opacity-rule '99:window_type = "dock" && class_g = "i3bar"' -CGb --vsync=opengl-swc --backend=glx
 # Start pulseaudio
 exec --no-startup-id start-pulseaudio-x11
+exec --no-startup-id mate-volume-control-applet
 # Network/Bluetooth access
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
