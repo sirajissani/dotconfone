@@ -108,7 +108,7 @@ hi CursorIM     ctermfg=black       ctermbg=white       cterm=reverse
 hi CursorLine   ctermfg=black       ctermbg=darkcyan    cterm=NONE
 hi CursorColumn ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi Visual       ctermfg=darkblue    ctermbg=gray        cterm=NONE
-hi IncSearch    ctermfg=white       ctermbg=yellow      cterm=NONE
+hi IncSearch    ctermfg=black       ctermbg=yellow      cterm=NONE
 hi Search       ctermfg=black       ctermbg=red         cterm=NONE
 hi MatchParen   ctermfg=white       ctermbg=blue        cterm=NONE
 hi ModeMsg      ctermfg=yellow      ctermbg=NONE        cterm=NONE
@@ -117,7 +117,7 @@ hi Question     ctermfg=green       ctermbg=NONE        cterm=NONE
 hi MoreMsg      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi ErrorMsg     ctermfg=white       ctermbg=red         cterm=bold
 hi WarningMsg   ctermfg=yellow      ctermbg=NONE        cterm=bold
-hi Comment      ctermfg=grey        ctermbg=black       cterm=NONE
+hi Comment      ctermfg=grey        ctermbg=black       cterm=italic
 hi Constant     ctermfg=magenta     ctermbg=NONE        cterm=NONE
 hi Boolean      ctermfg=red         ctermbg=NONE        cterm=bold
 hi Identifier   ctermfg=cyan        ctermbg=NONE        cterm=NONE
@@ -127,7 +127,7 @@ hi Type         ctermfg=green       ctermbg=NONE        cterm=bold
 hi Special      ctermfg=brown       ctermbg=NONE        cterm=bold
 hi SpecialChar  ctermfg=brown       ctermbg=NONE        cterm=NONE
 hi Ignore       ctermfg=darkgray    ctermbg=NONE        cterm=NONE
-hi Error        ctermfg=white       ctermbg=red         cterm=NONE
+hi Error        ctermfg=black       ctermbg=LightRed         cterm=NONE
 hi Todo         ctermfg=black       ctermbg=yellow      cterm=bold
 hi Underlined   ctermfg=NONE        ctermbg=NONE        cterm=underline   term=underline
 

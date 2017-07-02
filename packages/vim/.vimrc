@@ -62,7 +62,8 @@ set wildmenu               " menu has tab completion
 " Folds
 "noremap <space> za   " Toggle folding
 set foldlevel=100     " Default all folds open
-set foldmethod=indent " Set foldmethod
+set foldmethod=manual " Set foldmethod
+nnoremap <F5> zfa}
 
 "Set home directory
 ":cd ~
@@ -91,7 +92,7 @@ endif
 " Miscellaneous Tweaks
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Y yanks till the end of the line
-":map Y y$
+:map Y y$
 
 " Build cscope database and ctags with CTRL+F12
 ":source ~/.vim/plugin/cscope_maps.vim
@@ -256,9 +257,9 @@ set listchars=tab:»\ ,nbsp:\ ,trail:»
 set list
 
 "Hack for color consistency
-if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'mate-terminal'
-    set t_Co=256
-endif
+" if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'mate-terminal'
+set t_Co=256
+" endif
 
 colorscheme csg
 if has('gui_running')
