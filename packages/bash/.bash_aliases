@@ -161,6 +161,9 @@ alias mstop='mpc -h 192.168.1.5 stop'
 alias mpch='mpc -h 192.168.1.5'
 
 alias gdb='gdb -q'
+alias ssh='ssh -X'
+#SSH with compression
+alias sshc='ssh -XC -c blowfish-cbc,arcfour'
 
 alias myeclipse='GTK2_RC_FILES=~/.gtkrc-eclipse ~/programs/eclipse/eclipse'
 alias mysource="find \`pwd\` -regex '.*\.[i,c,h][n,p]?[l,p]?$'"
