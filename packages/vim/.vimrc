@@ -251,15 +251,19 @@ if &term =~ '^screen'
     execute "set <xLeft>=\e[1;*D"
 endif
 
+
+" Glaring display of whitespace mayhem
+"set listchars=tab:»\ ,nbsp:\ ,trail:»
+
+" Moderately stern feedback for tabs, ignorant for trailing whitespaces
 "set listchars=tab:➝\ ,space:·,trail:·
-set listchars=tab:»\ ,nbsp:\ ,trail:»
 
-set list
+" Less intrusive display of non-printable chars (for other's code you can't
+" change, for example, some kernel code) ;-(
+set listchars=tab:·\ ,space:\ ,trail:➝
 
-"Hack for color consistency
-" if $COLORTERM == 'gnome-terminal' || $COLORTERM == 'mate-terminal'
+" Most modern terminals now use this formatting and show colors in HD
 set t_Co=256
-" endif
 
 colorscheme noblesse_redux
 "colorscheme csg
