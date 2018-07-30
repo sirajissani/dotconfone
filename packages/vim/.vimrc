@@ -25,8 +25,8 @@ set ignorecase " ignores case of letters on searches
 set smartcase  " Override 'ignorecase' if the search pattern has upper case
 
 " Font
-set guifont=mononoki\ 10,Monaco\ 11,Monospace\ 11
 set guifont=mononoki\ 10,Monaco\ 11,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
+
 
 execute pathogen#infect()
 execute pathogen#helptags()
@@ -104,7 +104,7 @@ if file_readable(cscope_file)
   cs add ~/cscope.out
 endif
 set tags=~/tags
-set cscopequickfix=a-,s-,c-,d-,i-,t-,e-
+"set cscopequickfix=a-,s-,c-,d-,i-,t-,e-
 "Use following to map C-] to cstag
 "set cscopetag
 "Alternately use C-\ for :cstag and keep C-] for :tag
@@ -260,7 +260,7 @@ endif
 
 " Less intrusive display of non-printable chars (for other's code you can't
 " change, for example, some kernel code) ;-(
-set listchars=tab:·\ ,space:\ ,trail:➝
+"set listchars=tab:·\ ,space:\ ,trail:➝
 
 " Most modern terminals now use this formatting and show colors in HD
 set t_Co=256
