@@ -185,3 +185,4 @@ function connect_smarc_board() {
 #Common places of interest
 alias smarc=connect_smarc_board
 
+alias dr='docker run -it --rm -v${PWD}:${PWD} -w ${PWD}'
