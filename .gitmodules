@@ -48,3 +48,6 @@
 [submodule "packages/vim/.vim/bundle/tagbar"]
 	path = packages/vim/.vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
+[submodule "packages/vim/.vim/bundle/vim-ps1"]
+	path = packages/vim/.vim/bundle/vim-ps1
+	url = https://github.com/PProvost/vim-ps1.git
