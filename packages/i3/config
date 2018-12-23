@@ -10,6 +10,13 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $psst --no-startup-id
+exec_always $psst xrdb -merge ~/.Xresources
+set $compton_restart "killall compton; compton --opacity-rule '99:window_type = \"dock\" && class_g = \"i3bar\"' -CGb --vsync=opengl-swc --backend=glx"
+
+# fake-outputs 960x540+0+0,960x540+960+0,960x540+0+540,960x540+960+540
+# fake-outputs 3840x1080+0+0,1920x1080+3840+0
+# fake-outputs 1920x1080+0+0,1920x1080+1920+0
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -168,16 +175,20 @@ bindsym $mod+r mode "resize"
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` toggle # mute sound
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` 100%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` toggle # mute sound
+bindsym XF86AudioMicMute     exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` 100%
 
 # Move windows across workspaces
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+minus move scratchpad # Change to "sticky enable; move scratchpad" to make scratchpad visible on all workspaces
 bindsym $mod+minus scratchpad show
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# For 17.04 and above use https://github.com/haikarainen/light.git
+# bindsym XF86MonBrightnessUp   exec light -A 5 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 # Lock screen
 bindsym $mod+l exec i3lock -c 333333 -i `grep -o "/.*png" ~/.fehbg` && exec xset dpms force off
@@ -201,12 +212,15 @@ client.focused #FF0000 #FF0000 #FFFFFF #0000FF
 
 # Enable compton to avoid screen tearing, opacity rule is just for reference
 # Test using https://www.youtube.com/watch?v=0RvIbVmCOxg
-exec --no-startup-id compton --opacity-rule '99:window_type = "dock" && class_g = "i3bar"' -CGb --vsync=opengl-swc --backend=glx
+exec_always $compton_restart
 # Start pulseaudio
 exec --no-startup-id start-pulseaudio-x11
+# exec --no-startup-id mate-volume-control-applet
 # Network/Bluetooth access
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
+# Managing screensavers
+# exec --no-startup-id caffeine-indicator
 # Provide monitor applet, auto mounting of media
 exec --no-startup-id mate-settings-daemon
 # Set background

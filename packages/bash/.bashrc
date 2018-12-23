@@ -134,5 +134,21 @@ shopt -s histappend
 export PYTHONSTARTUP=~/.pythonrc
 
 function rm() {
-  command rm $@ -I
+  command rm "$@" -I
+}
+
+function finf() {
+  if [ $# == 1 ]; then
+    echo find . -type f -exec grep -EHni --color=auto \"$1\" {} \;
+    find . -type f -exec grep -EHni --color=auto "$1" {} \;
+  elif [ $# == 2 ]; then
+    helper="-iname"
+  else
+    helper=""
+  fi
+
+  key=$1
+  shift
+  echo find $helper "$@" -type f -exec grep -EHni --color=auto "$key" {} \;
+  find $helper "$@" -type f -exec grep -EHni --color=auto "$key" {} \;
 }
