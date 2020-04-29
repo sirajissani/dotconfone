@@ -27,6 +27,7 @@
 #   `unlink.sh`
 #
 
+git submodule update --init --recursive
 
 function backup_and_link() {
 	if [ ! -e $1 ] || [ ! -h $1 ]; then
