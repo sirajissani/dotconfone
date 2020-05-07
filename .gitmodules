@@ -51,3 +51,6 @@
 [submodule "packages/vim/.vim/bundle/vim-ps1"]
 	path = packages/vim/.vim/bundle/vim-ps1
 	url = https://github.com/PProvost/vim-ps1.git
+[submodule "packages/vim/.vim/bundle/i3config.vim"]
+	path = packages/vim/.vim/bundle/i3config.vim
+	url = https://github.com/mboughaba/i3config.vim.git
