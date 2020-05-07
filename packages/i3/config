@@ -212,18 +212,20 @@ client.focused #880000 #880000 #FFFFFF #FF0000
 
 # Enable compton to avoid screen tearing, opacity rule is just for reference
 # Test using https://www.youtube.com/watch?v=0RvIbVmCOxg
-exec --no-startup-id compton --opacity-rule '99:window_type = "dock" && class_g = "i3bar"' -CGb --vsync=opengl-swc --backend=glx
+#exec --no-startup-id compton --opacity-rule '99:window_type = "dock" && class_g = "i3bar"' -CGb --vsync=opengl-swc --backend=glx
 # Start pulseaudio
-exec --no-startup-id start-pulseaudio-x11
-exec --no-startup-id mate-volume-control-applet
+#exec --no-startup-id start-pulseaudio-x11
+#exec --no-startup-id mate-volume-control-applet
 # Network/Bluetooth access
-exec --no-startup-id blueman-applet
-exec --no-startup-id nm-applet
+#exec --no-startup-id blueman-applet
+#exec --no-startup-id nm-applet
 # Provide monitor applet, auto mounting of media
-exec --no-startup-id mate-settings-daemon
+#exec --no-startup-id mate-settings-daemon
 # Set background
-exec_always --no-startup-id sh ~/.fehbg
+exec --no-startup-id feh --randomize --bg-scale /usr/share/backgrounds/ubuntu-mate-photos
 # Window switcher
 bindsym $mod+Tab exec rofi -show window -font "Inconsolata 20"
 
-exec displays.sh
+# Set up single monitor on DP-3 if available
+exec ~/.config/i3/displays.sh
+

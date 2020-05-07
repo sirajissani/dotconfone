@@ -1,1 +1,2 @@
-feh -bg-max --randomize --no-fehbg  $(find /usr/share/backgrounds -type f)
+#!/bin/sh
+feh --bg-scale '/usr/share/backgrounds/ubuntu-mate-photos/tommy-lisbin-189189.jpg' '/usr/share/backgrounds/ubuntu-mate-photos/matteo-botto-16023.jpg' '/usr/share/backgrounds/ubuntu-mate-photos/gabriele-diwald-201135.jpg' '/usr/share/backgrounds/ubuntu-mate-photos/johann-siemens-591.jpg' '/usr/share/backgrounds/ubuntu-mate-photos/sebastian-muller-52.jpg' '/usr/share/backgrounds/ubuntu-mate-photos/andrew-ridley-54228.jpg' '/usr/share/backgrounds/ubuntu-mate-photos/nasa-53884.jpg' '/usr/share/backgrounds/ubuntu-mate-photos/stefan-stefancik-105374.jpg' '/usr/share/backgrounds/ubuntu-mate-photos/nattu-adnan-328570.jpg' '/usr/share/backgrounds/ubuntu-mate-photos/kristopher-roller-110203.jpg' 
