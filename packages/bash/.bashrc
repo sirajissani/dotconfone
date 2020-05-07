@@ -147,6 +147,8 @@ function rm() {
   command rm $@ -I
 }
 
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
 function finf() {
   if [ $# == 1 ]; then
     echo find . -type f -exec grep -EHni --color=auto \"$1\" {} \;
@@ -162,3 +164,4 @@ function finf() {
   echo find $helper "$@" -type f -exec grep -EHni --color=auto "$key" {} \;
   find $helper "$@" -type f -exec grep -EHni --color=auto "$key" {} \;
 }
+[ -r /home/sirajissani/.byobu/prompt ] && . /home/sirajissani/.byobu/prompt   #byobu-prompt#
