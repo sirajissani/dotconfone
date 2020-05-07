@@ -124,7 +124,7 @@ bindsym Control+Next       workspace next
 bindsym Control+Prior      workspace prev
 bindsym $mod+Home          workspace back_and_forth
 bindsym $mod+End           workspace back_and_forth
-bindsym $mod+Control+Up exec python3 ~/.config/i3/move_all.py
+bindsym $mod+Control+Up    exec python3 ~/.config/i3/move_all.py
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -208,7 +208,7 @@ bar {
 for_window [class="^.*"] border pixel 1
 for_window [class=".*alculator.*"] floating enable
 
-client.focused #FF0000 #FF0000 #FFFFFF #0000FF
+client.focused #880000 #880000 #FFFFFF #FF0000
 
 # Enable compton to avoid screen tearing, opacity rule is just for reference
 # Test using https://www.youtube.com/watch?v=0RvIbVmCOxg
@@ -226,4 +226,4 @@ exec_always --no-startup-id sh ~/.fehbg
 # Window switcher
 bindsym $mod+Tab exec rofi -show window -font "Inconsolata 20"
 
-xrandr --output $extern --primary --dpi 150 --auto --output $intern --off
+exec displays.sh
