@@ -29,6 +29,9 @@ font pango:Inconsolata 12
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Disable focus-follows-mouse behaviour
+focus_follows_mouse no
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -125,6 +128,9 @@ bindsym Control+Prior      workspace prev
 bindsym $mod+Home          workspace back_and_forth
 bindsym $mod+End           workspace back_and_forth
 bindsym $mod+Control+Up    exec python3 ~/.config/i3/move_all.py
+
+# enable back-and-forth switch of workspaces
+workspace_auto_back_and_forth yes
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
