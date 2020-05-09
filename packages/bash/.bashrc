@@ -164,4 +164,10 @@ function finf() {
   echo find $helper "$@" -type f -exec grep -EHni --color=auto "$key" {} \;
   find $helper "$@" -type f -exec grep -EHni --color=auto "$key" {} \;
 }
-[ -r /home/sirajissani/.byobu/prompt ] && . /home/sirajissani/.byobu/prompt   #byobu-prompt#
+
+function smssflash {
+  echo "Executing: \"STM32_Programmer_CLI -c port=SWD -d \"$1\" -v -hardRst\""
+  STM32_Programmer_CLI -c port=SWD -d "$1" -v -hardRst
+}
+
+[ -r $HOME/.byobu/prompt ] && . $HOME/.byobu/prompt   #byobu-prompt#
