@@ -77,7 +77,7 @@ if has('gui_running')
     set guioptions+=g
     set guioptions+=a
     set guioptions-=t
-    set guioptions+=m
+    set guioptions-=m
     set guioptions-=L
     set guioptions-=l
     set guioptions-=r
