@@ -54,3 +54,6 @@
 [submodule "packages/vim/.vim/bundle/i3config.vim"]
 	path = packages/vim/.vim/bundle/i3config.vim
 	url = https://github.com/mboughaba/i3config.vim.git
+[submodule "packages/vim/.vim/bundle/tabnine-vim"]
+	path = packages/vim/.vim/bundle/tabnine-vim
+	url = https://github.com/zxqfl/tabnine-vim
