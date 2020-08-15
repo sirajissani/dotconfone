@@ -57,3 +57,6 @@
 [submodule "packages/vim/.vim/bundle/tabnine-vim"]
 	path = packages/vim/.vim/bundle/tabnine-vim
 	url = https://github.com/zxqfl/tabnine-vim
+[submodule "packages/vim/.vim/bundle/vim-clang-format"]
+	path = packages/vim/.vim/bundle/vim-clang-format
+	url = https://github.com/rhysd/vim-clang-format.git
