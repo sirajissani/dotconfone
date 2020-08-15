@@ -166,8 +166,8 @@ function finf() {
 }
 
 function smssflash {
-  echo "Executing: \"STM32_Programmer_CLI -c port=SWD -d \"$1\" -v -hardRst\""
-  STM32_Programmer_CLI -c port=SWD -d "$1" -v -hardRst
+  echo "Executing: \"STM32_Programmer_CLI -c port=SWD reset=HWrst -d \"$1\" 0x08000000 -v -hardRst\""
+  STM32_Programmer_CLI -c port=SWD reset=HWrst -d "$1" 0x08000000 -v -hardRst
 }
 
 [ -r $HOME/.byobu/prompt ] && . $HOME/.byobu/prompt   #byobu-prompt#
