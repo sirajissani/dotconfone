@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --bg-scale --recursive --randomize --no-fehbg /usr/share/backgrounds/cosmos /usr/share/backgrounds/mate

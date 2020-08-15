@@ -233,7 +233,9 @@ client.focused #880000 #880000 #FFFFFF #FF0000
 #exec --no-startup-id nm-applet
 # Provide monitor applet, auto mounting of media
 #exec --no-startup-id mate-settings-daemon
-# Set background
-exec --no-startup-id feh --randomize --bg-scale /usr/share/backgrounds/ubuntu-mate-photos
+
+# Radomize background
+exec --no-startup-id ~/.fehbg
+
 # Window switcher
 bindsym $mod+Tab exec rofi -show window -font "Fira Code 16"
