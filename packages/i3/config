@@ -9,6 +9,9 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# Set up single monitor on DP-3 if available
+exec ~/.config/i3/displays.sh
+
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -192,6 +195,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `pactl l
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` -5%
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` toggle
 bindsym XF86AudioMicMute     exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` 100%
+bindsym $mod+Ctrl+space exec playerctl play-pause
 
 # Move windows across workspaces
 bindsym $mod+Shift+minus move scratchpad
@@ -216,9 +220,6 @@ for_window [title="Microsoft Teams Notification" class="microsoft teams - previe
 for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"] floating enable
 
 client.focused #880000 #880000 #FFFFFF #FF0000
-
-# Set up single monitor on DP-3 if available
-exec ~/.config/i3/displays.sh
 
 # Enable compton to avoid screen tearing, opacity rule is just for reference
 # Test using https://www.youtube.com/watch?v=0RvIbVmCOxg
