@@ -49,9 +49,10 @@ hi TabLineFill  guifg=#000000       guibg=#c2bfa5 gui=NONE
 hi TabLineSel   guifg=#ffffff       guibg=#133293 gui=NONE
 hi Cursor       guifg=#000000       guibg=#20a020 gui=NONE
 hi CursorIM     guifg=#000000       guibg=#aaccff gui=NONE
-hi CursorLine   guifg=Grey10        guibg=Grey60  gui=NONE
-hi CursorColumn guifg=NONE          guibg=#1b1b1b gui=NONE
-hi Visual       guifg=Grey10        guibg=Grey95  gui=NONE
+hi CursorLine   guifg=NONE          guibg=Grey15  gui=NONE
+hi CursorColumn guifg=NONE          guibg=Grey15  gui=NONE
+hi CursorLineNr guifg=Yellow        guibg=Black   gui=bold
+hi Visual       guifg=NONE          guibg=Grey25  gui=bold
 hi IncSearch    guifg=#000000       guibg=#eedd33 gui=bold
 hi Search       guifg=Black         guibg=Red     gui=NONE
 hi MatchParen   guifg=NONE          guibg=#3377aa gui=NONE
@@ -105,8 +106,8 @@ hi TabLineFill  ctermfg=black       ctermbg=white       cterm=NONE
 hi TabLineSel   ctermfg=white       ctermbg=black       cterm=NONE
 hi Cursor       ctermfg=black       ctermbg=green       cterm=NONE
 hi CursorIM     ctermfg=black       ctermbg=white       cterm=reverse
-hi CursorLine   ctermfg=black       ctermbg=darkcyan    cterm=NONE
-hi CursorColumn ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi CursorLine   ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+hi CursorColumn ctermfg=NONE        ctermbg=darkgray    cterm=NONE
 hi Visual       ctermfg=darkblue    ctermbg=gray        cterm=NONE
 hi IncSearch    ctermfg=black       ctermbg=yellow      cterm=NONE
 hi Search       ctermfg=black       ctermbg=red         cterm=NONE
