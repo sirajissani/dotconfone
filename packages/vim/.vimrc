@@ -25,7 +25,7 @@ set ignorecase " ignores case of letters on searches
 set smartcase  " Override 'ignorecase' if the search pattern has upper case
 
 " Font
-set guifont=Inconsolata\ 12,mononoki\ 10,Monaco\ 11,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
+set guifont=Fira\ Code\ 12,Inconsolata\ 12,mononoki\ 10,Monaco\ 11,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
 
 
 execute pathogen#infect()
@@ -36,9 +36,9 @@ set expandtab
 set smarttab
 set smartindent   " smart indent of code - indent after opening '{',
 set autoindent    " Copy indent from current line when starting a new line
-set shiftwidth=4  " Number of spaces to use for each step of (auto)indent
-set tabstop=4     " Number of spaces that a <Tab> in the file counts for.
-set softtabstop=4 " Backspace the proper number of spaces
+set shiftwidth=2  " Number of spaces to use for each step of (auto)indent
+set tabstop=2     " Number of spaces that a <Tab> in the file counts for.
+set softtabstop=2 " Backspace the proper number of spaces
 set shiftround    " Round indent to multiple of 'shiftwidth'
 
 " Wrapping
@@ -50,7 +50,7 @@ set sidescroll=5
 filetype on          " Automatically detect file types
 filetype indent on   " Filetype specific indentation
 filetype plugin on
-set fileencodings=   " don't do any encoding conversion (otherwise munges binary files)
+set fileencodings=utf-8,gb2312,latin1 " don't do any encoding conversion (otherwise munges binary files)
 syntax on            " Syntax Highlighting
 " colorscheme selection is below
 
@@ -64,6 +64,13 @@ set wildmenu               " menu has tab completion
 set foldlevel=100     " Default all folds open
 set foldmethod=manual " Set foldmethod
 nnoremap <F5> zfa}
+
+set relativenumber
+set rnu
+autocmd InsertEnter * set cursorcolumn
+autocmd InsertEnter * set cursorline
+autocmd InsertLeave * set nocursorcolumn
+autocmd InsertLeave * set nocursorline
 
 "Set home directory
 ":cd ~
@@ -178,7 +185,7 @@ inoremap # #
 
 " C Indentation options: K&R Style
 set nocp incsearch
-set cinoptions=:0,p0,t0
+set cinoptions=:0,p0,t0,g0
 set cinwords=if,else,while,do,for,switch,case
 set formatoptions=tcqr
 set cindent
@@ -239,6 +246,20 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Process_File_Always = 1
 
+" vim-clang-format
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -2,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++14"}
+
+" map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" if you install vim-operator-user
+autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+" Toggle auto formatting:
+nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 map <C-Left> b
 map <C-Right> e
@@ -248,12 +269,12 @@ if &term =~ '^screen'
     execute "set <xUp>=\e[1;*A"
     execute "set <xDown>=\e[1;*B"
     execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
+    execute "set <xLeft>=\e[1;*D"    
 endif
 
 
 " Glaring display of whitespace mayhem
-"set listchars=tab:»\ ,nbsp:\ ,trail:»
+set listchars=tab:»\ ,nbsp:\ ,trail:·
 
 " Moderately stern feedback for tabs, ignorant for trailing whitespaces
 "set listchars=tab:➝\ ,space:·,trail:·
@@ -261,6 +282,8 @@ endif
 " Less intrusive display of non-printable chars (for other's code you can't
 " change, for example, some kernel code) ;-(
 "set listchars=tab:·\ ,space:\ ,trail:➝
+
+set list
 
 " Most modern terminals now use this formatting and show colors in HD
 set t_Co=256
@@ -277,11 +300,10 @@ colorscheme noblesse_redux
 imap <C-Right> <esc>ea
 imap <C-Left> <esc>bi
 
-autocmd FileType  c,cpp,h,hpp,cxx   setlocal cc=81 | setlocal shiftwidth=2 | setlocal tabstop=2 | setlocal softtabstop=2 | set noic
-autocmd FileType  python            setlocal cc=81 | set noic
+autocmd FileType  c,cpp,h,hpp,cxx,python   setlocal cc=81 | setlocal shiftwidth=2 | setlocal tabstop=2 | setlocal softtabstop=2 | set noic
 autocmd FileType  conque_term       setlocal nolist
 
-let g:jedi#force_py_version = 3
+"let g:jedi#force_py_version = 3
 let g:neocomplete#enable_at_startup = 1
 
 nmap <Leader>z <Plug>(easymotion-sn)
