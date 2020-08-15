@@ -1,5 +1,0 @@
-#!/bin/sh
-find /usr/share/backgrounds/ \
-  -type f -regextype grep \
-  -iregex ".*\.pNg\|.*\.jpg$" | xargs \
-  feh --bg-scale
