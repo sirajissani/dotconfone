@@ -1,7 +1,14 @@
 # enable color support of ls and also add handy aliases
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
-	alias ls='ls --color=auto -h'
+    alias ls='LC_COLLATE=C ls -h --group-directories-first --color=auto'
 
     alias grep='grep -E --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -40,6 +47,8 @@ alias td='tree -daC'
 export LESS=' -R -i'
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # make commands verbose
 alias rm='rm -Iv'
@@ -70,13 +79,6 @@ alias httpmirror='wget --tries 7 --waitretry=30 --wait=5 --random-wait --user-ag
 alias lyr='conky -c ~/.conkyrc_lyrics &> /dev/null'
 alias con='conky -c ~/.conkyrc &> /dev/null'
 
-#alias for random words as a typing excercise in ktouch
-alias randwords="cat /usr/share/dict/words |grep -v \' | grep '^[a-z]'| shuf| head -250 | tr '\n' ' ' | line > ~/.ktouch/middle; cat /home/chillu/.ktouch/start /home/chillu/.ktouch/middle /home/chillu/.ktouch/end > /home/chillu/.ktouch/random.xml"
-
-# alias mpz='aoss mplayer -aspect 16:10'
-# alias mp='aoss mplayer'
-# alias mplayer='aoss mplayer'
-
 # List top level directory sizes under the current directory
 alias dsl='find -maxdepth 1 -type d -exec du '{}' -s \; | sort -nr'
 
@@ -105,33 +107,8 @@ alias myvncserver='x11vnc -display :0 -usepw -forever -ncache 10 -scale 0.75 -no
 #Watch current directory for changes with most recent at the top
 alias mywatch='watch -n1 tree -sht'
 
-#Remove Annoying leading pages from JSTOR downloaded papers
-function choplead
-{
-    if [ -z "$2" ]
-    then
-       echo "Chopping off the first page"
-       myvar=1
-    else
-       myvar=$2
-       echo "Chopping off the first $myvar page(s)"
-    fi
-    pdftk "$1" cat $(($myvar + 1))-end output /tmp/out.pdf
-    mv /tmp/out.pdf "$1"
-}
-
 #vim pager
-alias vmore="gvim -u ~/.vimrc.more -"
-
-#apt aliases
-alias ag='sudo apt-get'
-alias agi='sudo apt-get install'
-alias agr='sudo apt-get remove'
-alias agu='sudo apt-get update'
-alias aga='sudo apt-get autoremove'
-alias acs='apt-cache search'
-alias dpl='dpkg -l'
-alias dpp='dpkg -p'
+alias vmore="vim -u ~/.vimrc -"
 
 #hexdump
 alias hd='od -Ad -tx1z -w16 -v'
@@ -140,18 +117,11 @@ alias hd='od -Ad -tx1z -w16 -v'
 alias cal='cal -3m'
 psu(){ command ps -Hcl -F S f -u ${1:-$USER}; }
 
-#twidge
-alias twdm='twidge lsdm'
-alias twar='twidge lsarchive'
-alias twr='twidge lsrecent'
-alias twre='twidge lsreplies'
-alias twup='twidge update'
-
 #info
 alias info='info --vi-keys'
 
 #wireless
-alias wfind='sudo iwlist eth0 scan | grep "(ESSID|Quality)"'
+alias wfind='sudo iwlist wlp3s0 scan | grep "(ESSID|Quality)"'
 
 #mpd mpc
 alias mpdinit='sudo /etc/init.d/mpd'
@@ -170,19 +140,26 @@ alias mysource="find \`pwd\` -regex '.*\.[i,c,h][n,p]?[l,p]?$'"
 unalias vi
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 
-function connect_smarc_board() {
-    case $# in
-        0 ) cmd="ssh root@192.168.151.57";;
-        1 ) cmd="ssh root@192.168.151.$1";;
-        2 ) cmd="ssh root@192.168.$1.$2";;
-        3 ) cmd="ssh root@192.$1.$2.$3";;
-        4 ) cmd="ssh root@$1.$2.$3.$4";;
-    esac
-    echo $cmd
-    $cmd
+alias dr='docker run -it --rm -v${PWD}:${PWD} -w ${PWD}'
+
+function smssflash {
+  echo "Executing: \"STM32_Programmer_CLI -c port=SWD reset=HWrst -d \"$1\" 0x08000000 -v -hardRst\""
+  STM32_Programmer_CLI -c port=SWD reset=HWrst -d "$1" 0x08000000 -v -hardRst
 }
 
-#Common places of interest
-alias smarc=connect_smarc_board
+function finf() {
+  searchdir=""
+  if [ $# -ge 2 ]; then
+    searchdir="$2"
+  fi
 
-alias dr='docker run -it --rm -v${PWD}:${PWD} -w ${PWD}'
+  filepattern=""
+  if [ $# -ge 3 ]; then
+    filepattern="-regextype grep -iregex '$3'"
+  fi
+
+  key="\"$1\""
+
+  echo "find ${searchdir} -type f ${filepattern} | xargs grep -EHni --color=auto ${key}"
+  find ${searchdir} -type f ${filepattern} | xargs grep -EHni --color=auto ${key}
+}
