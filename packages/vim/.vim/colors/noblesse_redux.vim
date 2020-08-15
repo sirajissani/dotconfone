@@ -106,8 +106,8 @@ hi TabLineFill  ctermfg=black       ctermbg=white       cterm=NONE
 hi TabLineSel   ctermfg=white       ctermbg=black       cterm=NONE
 hi Cursor       ctermfg=black       ctermbg=green       cterm=NONE
 hi CursorIM     ctermfg=black       ctermbg=white       cterm=reverse
-hi CursorLine   ctermfg=NONE        ctermbg=darkgray    cterm=NONE
-hi CursorColumn ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+hi CursorLine   ctermfg=NONE        ctermbg=236         cterm=NONE
+hi CursorColumn ctermfg=NONE        ctermbg=236         cterm=NONE
 hi Visual       ctermfg=darkblue    ctermbg=gray        cterm=NONE
 hi IncSearch    ctermfg=black       ctermbg=yellow      cterm=NONE
 hi Search       ctermfg=black       ctermbg=red         cterm=NONE
@@ -118,7 +118,7 @@ hi Question     ctermfg=green       ctermbg=NONE        cterm=NONE
 hi MoreMsg      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi ErrorMsg     ctermfg=white       ctermbg=red         cterm=bold
 hi WarningMsg   ctermfg=yellow      ctermbg=NONE        cterm=bold
-hi Comment      ctermfg=grey        ctermbg=black       cterm=italic
+hi Comment      ctermfg=grey        ctermbg=black       cterm=NONE
 hi Constant     ctermfg=magenta     ctermbg=NONE        cterm=NONE
 hi Boolean      ctermfg=red         ctermbg=NONE        cterm=bold
 hi Identifier   ctermfg=cyan        ctermbg=NONE        cterm=NONE
