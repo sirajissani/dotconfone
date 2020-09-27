@@ -104,7 +104,7 @@ eval "$(pandoc --bash-completion)"
 
 xhost + > /dev/null 2> /dev/null
 if [ ! -f ~/.git-prompt.sh ]; then
-  wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git-prompt.sh
+  curl -s https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh --output ~/.git-prompt.sh
 fi
 source ~/.git-prompt.sh
 #export PS1="[\`printf %3d \$?\`]$PS1"
