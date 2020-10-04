@@ -124,7 +124,7 @@ shopt -s histappend
 export PYTHONSTARTUP=~/.pythonrc
 
 function rm() {
-  command rm $@ -I
+  command rm $@
 }
 
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"

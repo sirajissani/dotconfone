@@ -51,7 +51,7 @@ export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # make commands verbose
-alias rm='rm -Iv'
+alias rm='rm -v'
 alias cp='cp -v'
 alias mv='mv -v'
 alias mkdir='mkdir -p -v'
