@@ -25,7 +25,7 @@ set ignorecase " ignores case of letters on searches
 set smartcase  " Override 'ignorecase' if the search pattern has upper case
 
 " Font
-set guifont=Fira\ Code\ 12,Inconsolata\ 12,mononoki\ 10,Monaco\ 11,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
+set guifont=Fira\ Code:h12,Inconsolata:h12,mononoki:h10,Monaco:h12,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
 
 
 execute pathogen#infect()
@@ -110,7 +110,7 @@ if file_readable(cscope_file)
   cs reset
   cs add ~/cscope.out
 endif
-set tags=~/tags
+set tags=./tags
 "set cscopequickfix=a-,s-,c-,d-,i-,t-,e-
 "Use following to map C-] to cstag
 "set cscopetag
