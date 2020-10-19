@@ -10,10 +10,6 @@
 [submodule "packages/vim/.vim/bundle/nerdtree"]
 	path = packages/vim/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "packages/vim/.vim/bundle/Conque-GDB"]
-	path = packages/vim/.vim/bundle/Conque-GDB
-	url = https://github.com/vim-scripts/Conque-GDB.git
-	ignore = untracked
 [submodule "packages/vim/.vim/bundle/Align"]
 	path = packages/vim/.vim/bundle/Align
 	url = https://github.com/vim-scripts/Align.git
@@ -60,6 +56,8 @@
 [submodule "packages/vim/.vim/bundle/vim-clang-format"]
 	path = packages/vim/.vim/bundle/vim-clang-format
 	url = https://github.com/rhysd/vim-clang-format.git
+	ignore = untracked
 [submodule "packages/vim/.vim/bundle/vim-fugitive"]
 	path = packages/vim/.vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
+	ignore = untracked
