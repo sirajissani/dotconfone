@@ -110,12 +110,14 @@ if file_readable(cscope_file)
   cs reset
   cs add ~/cscope.out
 endif
-set tags=./tags
+set tags+=tags;/
 "set cscopequickfix=a-,s-,c-,d-,i-,t-,e-
 "Use following to map C-] to cstag
 "set cscopetag
 "Alternately use C-\ for :cstag and keep C-] for :tag
 map <C-\> <Esc>:cstag <C-r><C-W><CR>
+
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|BUILD)|(\.(swp|ico|git|svn))$'
 
 " Dictionary for keyword i_C-X_C-K completion
 set dictionary=/usr/share/dict/words
@@ -123,7 +125,7 @@ set dictionary=/usr/share/dict/words
 set keywordprg=man\ -P\ more
 
 " AutoChange directory on switching buffers - fixed to avoid ConqueGdb failure
-autocmd BufEnter * if expand("%:p:h") !~ 'Conque-Gdb.*gdb' | silent! lcd %:p:h
+"autocmd BufEnter * if expand("%:p:h") !~ 'Conque-Gdb.*gdb' | silent! lcd %:p:h
 
 " Move more screenfuls at a time
 nnoremap <C-e> 3<C-e>
