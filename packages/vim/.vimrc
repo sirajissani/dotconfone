@@ -128,8 +128,8 @@ set keywordprg=man\ -P\ more
 "autocmd BufEnter * if expand("%:p:h") !~ 'Conque-Gdb.*gdb' | silent! lcd %:p:h
 
 " Move more screenfuls at a time
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>
 
 " Visual Mode Swapping Goodness!
 ":vnoremap <C-X> <Esc>`.``gvP``P
