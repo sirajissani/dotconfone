@@ -20,7 +20,7 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockSt
 
 " Search
 set incsearch  " show 'best match so far' as you type
-set nohls      " Don't highlight matches. Use :set hls when needed.
+set hls        " Do highlight matches. Use :nohls when needed.
 set ignorecase " ignores case of letters on searches
 set smartcase  " Override 'ignorecase' if the search pattern has upper case
 
@@ -103,13 +103,13 @@ endif
 
 " Build cscope database and ctags with CTRL+F12
 ":source ~/.vim/plugin/cscope_maps.vim
-"map <C-F12> :!cscope_gen.sh; ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <C-F12> :!git ls-files \| ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
 "set tags+=~/.vim/tags/cpp;./tags
-let cscope_file=$HOME."/cscope.out"
-if file_readable(cscope_file)
-  cs reset
-  cs add ~/cscope.out
-endif
+"let cscope_file=$HOME."/cscope.out"
+"if file_readable(cscope_file)
+"  cs reset
+"  cs add ~/cscope.out
+"endif
 set tags+=tags;/
 "set cscopequickfix=a-,s-,c-,d-,i-,t-,e-
 "Use following to map C-] to cstag
