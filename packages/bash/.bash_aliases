@@ -45,7 +45,7 @@ alias td='tree -daC'
 #Case insensitive searching if search string
 #contains only lowercase letters => smartcase
 export LESS=' -R -i'
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESSOPEN="| `which src-hilite-lesspipe.sh` %s"
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
