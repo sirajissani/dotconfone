@@ -63,7 +63,7 @@ set wildmenu               " menu has tab completion
 "noremap <space> za   " Toggle folding
 set foldlevel=100     " Default all folds open
 set foldmethod=manual " Set foldmethod
-nnoremap <F5> zfa}
+nnoremap <F4> zfa}
 
 set relativenumber
 set rnu
@@ -148,7 +148,8 @@ let html_use_css=1
 let use_xhtml=1
 
 " Quickfix Window
-map <F6> <esc>:cf<cr><esc>:copen<cr><esc><C-w>J<esc>:cf<cr>
+map <F5> <esc>:!./build.sh -j8<cr>
+map <F6> <esc>:cf<cr><esc>:copen<cr><esc><C-w>J<esc>/error<cr><cr>
 map cn <esc>:cn<cr>
 map cp <esc>:cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
