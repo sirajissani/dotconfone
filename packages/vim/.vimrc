@@ -46,6 +46,10 @@ set wrap
 set sidescroll=5
 "set listchars+=precedes:<,extends:>
 
+" Load external vimrc for project specific settings
+set exrc
+set secure
+
 " Filetype and Synatx Highlighting
 filetype on          " Automatically detect file types
 filetype indent on   " Filetype specific indentation
