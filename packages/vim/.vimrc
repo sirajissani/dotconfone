@@ -117,7 +117,7 @@ set tags+=tags;/
 "Alternately use C-\ for :cstag and keep C-] for :tag
 map <C-\> <Esc>:cstag <C-r><C-W><CR>
 
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|BUILD)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|BUILD|__build)|(\.(swp|ico|git|svn))$'
 
 " Dictionary for keyword i_C-X_C-K completion
 set dictionary=/usr/share/dict/words
