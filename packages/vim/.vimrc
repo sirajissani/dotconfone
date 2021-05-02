@@ -307,6 +307,11 @@ colorscheme noblesse_redux
 imap <C-Right> <esc>ea
 imap <C-Left> <esc>bi
 
+" Register known extensions
+autocmd BufEnter *.tpp :setlocal filetype=cpp
+autocmd BufEnter *.ijm :setlocal filetype=javascript
+autocmd BufEnter *.pyscn :setlocal filetype=python
+
 autocmd FileType  c,cpp,h,hpp,cxx,python   setlocal cc=81 | setlocal shiftwidth=2 | setlocal tabstop=2 | setlocal softtabstop=2 | set noic
 autocmd FileType  conque_term       setlocal nolist
 
