@@ -152,7 +152,7 @@ let html_use_css=1
 let use_xhtml=1
 
 " Quickfix Window
-map <F5> <esc>:!./build.sh -j8<cr>
+map <F5> <esc>:!mbed compile -j8 -DBUILD_VERSION=\"experimental\" \| tee errors.err<cr>
 map <F6> <esc>:cf<cr><esc>:copen<cr><esc><C-w>J<esc>/error<cr><cr>
 map cn <esc>:cn<cr>
 map cp <esc>:cp<cr>
@@ -257,10 +257,11 @@ let Tlist_Process_File_Always = 1
 let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -2,
             \ "AllowShortIfStatementsOnASingleLine" : "true",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "false",
             \ "Standard" : "C++14"}
 
 " map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc :ClangFormatAutoEnable
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 " if you install vim-operator-user
