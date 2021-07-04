@@ -131,10 +131,6 @@ set keywordprg=man\ -P\ more
 " AutoChange directory on switching buffers - fixed to avoid ConqueGdb failure
 "autocmd BufEnter * if expand("%:p:h") !~ 'Conque-Gdb.*gdb' | silent! lcd %:p:h
 
-" Move more screenfuls at a time
-nnoremap <C-e> 5<C-e>
-nnoremap <C-y> 5<C-y>
-
 " Visual Mode Swapping Goodness!
 ":vnoremap <C-X> <Esc>`.``gvP``P
 
@@ -153,7 +149,7 @@ let use_xhtml=1
 
 " Quickfix Window
 map <F5> <esc>:!mbed compile -j8 -DBUILD_VERSION=\"experimental\" \| tee errors.err<cr>
-map <F6> <esc>:cf<cr><esc>:copen<cr><esc><C-w>J<esc>/error<cr><cr>
+map <F6> <esc>:cf<cr><esc>:copen<cr><esc><C-w>J<cr>
 map cn <esc>:cn<cr>
 map cp <esc>:cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -169,10 +165,10 @@ map <C-W><C-Right> <C-W>l
 " Zoom current window
 "map <C-z> <C-W>_
 " Resize window
-map <C-z> <C-W><
-map <C-s> <C-W>>
-map <C-b> <C-W>+
-map <C-n> <C-W>-
+map <C-z> 3<C-W><
+map <C-s> 3<C-W>>
+map <C-b> 3<C-W>+
+map <C-n> 3<C-W>-
 
 " Tabs
 ":map <C-t> :tabnew<CR>
@@ -313,7 +309,8 @@ autocmd BufEnter *.tpp :setlocal filetype=cpp
 autocmd BufEnter *.ijm :setlocal filetype=javascript
 autocmd BufEnter *.pyscn :setlocal filetype=python
 
-autocmd FileType  c,cpp,h,hpp,cxx,python   setlocal cc=81 | setlocal shiftwidth=2 | setlocal tabstop=2 | setlocal softtabstop=2 | set noic
+autocmd FileType  c,cpp,h,hpp,cxx   setlocal cc=81 | setlocal shiftwidth=2 | setlocal tabstop=2 | setlocal softtabstop=2 | set noic
+autocmd FileType python   setlocal cc=81 | setlocal shiftwidth=4 | setlocal tabstop=4 | setlocal softtabstop=4 | set noic
 autocmd FileType  conque_term       setlocal nolist
 
 "let g:jedi#force_py_version = 3
