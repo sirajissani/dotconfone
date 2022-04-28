@@ -136,7 +136,7 @@ set keywordprg=man\ -P\ more
 
 " Edit the vimrc files easily
 :nmap ,es :source ~/.vimrc<CR>
-:nmap ,ev :e ~/.vimrc<CR>
+:nmap ,ev :vsp ~/.vimrc<CR>
 
 " visual shifting (builtin-repeat)
 :vnoremap < <gv
@@ -148,8 +148,8 @@ let html_use_css=1
 let use_xhtml=1
 
 " Quickfix Window
-map <F5> <esc>:!mbed compile -j8 -DBUILD_VERSION=\"experimental\" \| tee errors.err<cr>
-map <F6> <esc>:cf<cr><esc>:copen<cr><esc><C-w>J<cr>
+map <F5> <esc>:make<cr>
+map <F6> <esc>:copen<cr><esc><C-w>J<cr>
 map cn <esc>:cn<cr>
 map cp <esc>:cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -221,13 +221,14 @@ autocmd FileType python nnoremap <buffer> ]] /^class\\|^\s*def<CR>
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
-:let NERDTreeWinPos="left"
-:let NERDTreeWinSize=35
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 nmap <silent> E :NERDTreeToggle<CR>
+let NERDTreeWinPos="left"
+let NERDTreeWinSize=35
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-" Don't autostart
-"autocmd VimEnter * NERDTree
-"autocmd VimEnter * wincmd p
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeQuitOnOpen = 1
 
 " FuzzyFinder
 let g:fuf_modesDisable = []
