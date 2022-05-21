@@ -66,3 +66,6 @@
 	path = packages/vim/.vim/bundle/diffchar.vim
 	url = https://github.com/rickhowe/diffchar.vim
 	ignore = untracked
+[submodule "packages/vim/.vim/bundle/vim-airline"]
+	path = packages/vim/.vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
