@@ -72,3 +72,6 @@
 [submodule "packages/vim/.vim/bundle/papercolor-theme"]
 	path = packages/vim/.vim/bundle/papercolor-theme
 	url = https://github.com/NLKNguyen/papercolor-theme.git
+[submodule "packages/vim/.vim/bundle/YouCompleteMe"]
+	path = packages/vim/.vim/bundle/YouCompleteMe
+	url = https://github.com/ycm-core/YouCompleteMe.git
