@@ -30,19 +30,23 @@
 git submodule update --init --recursive
 
 function backup_and_link() {
-	if [ ! -e $1 ] || [ ! -h $1 ]; then
-		echo "  Backing up  $1 --> $1.bak"
-		mv $1 $1.bak
-		echo "  Linking     $1 --> $2"
-		ln -s $2 $1
-	else
-		echo "  Skipping    $1"
-	fi
+  if [ ! -e $1 ] || [ ! -h $1 ]; then
+    echo "  Backing up  $1 --> $1.bak"
+    mv $1 $1.bak
+    echo "  Linking     $1 --> $2"
+    ln -s $2 $1
+  else
+    echo "  Skipping    $1"
+  fi
 }
 
 
 if [ ! -e "$HOME" ]; then
-	exit -1;
+  exit -1;
+fi
+
+if [ ! -e "$HOME/.config" ]; then
+  mkdir -p $HOME/.config
 fi
 
 DCO_PATH=$PWD/$(dirname $0)
@@ -53,3 +57,4 @@ backup_and_link $HOME/.bashrc         $DCO_PATH/packages/bash/.bashrc
 backup_and_link $HOME/.bash_aliases   $DCO_PATH/packages/bash/.bash_aliases
 backup_and_link $HOME/.config/i3      $DCO_PATH/packages/i3
 backup_and_link $HOME/.fehbg          $DCO_PATH/packages/feh/.fehbg
+backup_and_link $HOME/.config/nvim    $DCO_PATH/packages/neovim/.config/nvim
