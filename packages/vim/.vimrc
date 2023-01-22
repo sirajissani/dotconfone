@@ -27,7 +27,6 @@ set smartcase  " Override 'ignorecase' if the search pattern has upper case
 " Font
 set guifont=Fira\ Code:h12,Inconsolata:h12,mononoki:h10,Monaco:h12,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
 
-
 execute pathogen#infect()
 execute pathogen#helptags()
 
@@ -93,6 +92,7 @@ if has('gui_running')
     set guioptions-=l
     set guioptions-=r
     set guioptions-=R
+    set guioptions+=c
 endif
 
 " Completely turn of blinking
@@ -121,7 +121,7 @@ set tags+=tags;/
 "Alternately use C-\ for :cstag and keep C-] for :tag
 map <C-\> <Esc>:cstag <C-r><C-W><CR>
 
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|BUILD|__build)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|BUILD|dist|__build|venv.*)|(\.(swp|ico|git|svn))$'
 
 " Dictionary for keyword i_C-X_C-K completion
 set dictionary=/usr/share/dict/words
@@ -269,6 +269,9 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 map <C-Left> b
 map <C-Right> e
 
+" Use homebrew's clangd
+let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
+
 if &term =~ '^screen'
     " tmux will send xterm-style keys when its xterm-keys option is on
     execute "set <xUp>=\e[1;*A"
@@ -310,8 +313,8 @@ autocmd BufEnter *.tpp :setlocal filetype=cpp
 autocmd BufEnter *.ijm :setlocal filetype=javascript
 autocmd BufEnter *.pyscn :setlocal filetype=python
 
-autocmd FileType  c,cpp,h,hpp,cxx   setlocal cc=81 | setlocal shiftwidth=2 | setlocal tabstop=2 | setlocal softtabstop=2 | set noic
-autocmd FileType python   setlocal cc=81 | setlocal shiftwidth=4 | setlocal tabstop=4 | setlocal softtabstop=4 | set noic
+autocmd FileType  c,cpp,h,hpp,cxx   setlocal cc=88 | setlocal shiftwidth=2 | setlocal tabstop=2 | setlocal softtabstop=2 | set noic
+autocmd FileType python   setlocal cc=88 | setlocal shiftwidth=4 | setlocal tabstop=4 | setlocal softtabstop=4 | set noic
 autocmd FileType  conque_term       setlocal nolist
 
 "let g:jedi#force_py_version = 3
