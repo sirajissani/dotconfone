@@ -54,7 +54,7 @@ hi CursorColumn guifg=NONE          guibg=Grey15  gui=NONE
 hi CursorLineNr guifg=Yellow        guibg=Black   gui=bold
 hi Visual       guifg=NONE          guibg=Grey25  gui=bold
 hi IncSearch    guifg=#000000       guibg=#eedd33 gui=bold
-hi Search       guifg=Black         guibg=Red     gui=NONE
+hi Search       guifg=NONE         guibg=DarkMagenta     gui=NONE
 hi MatchParen   guifg=NONE          guibg=#3377aa gui=NONE
 hi ModeMsg      guifg=#eecc18       guibg=NONE    gui=NONE
 hi Title        guifg=#dd4452       guibg=NONE    gui=bold
@@ -84,10 +84,10 @@ hi Directory    ctermfg=cyan        ctermbg=NONE        cterm=NONE
 hi NonText      ctermfg=yellow      ctermbg=NONE        cterm=NONE
 hi SpecialKey   ctermfg=green       ctermbg=NONE        cterm=NONE
 hi SpellBad     ctermfg=white       ctermbg=darkred     guisp=#ff0011
-hi SpellCap     ctermfg=white       ctermbg=darkblue    guisp=#0044ff
+hi SpellCap     ctermfg=white       ctermbg=236    guisp=#0044ff
 hi SpellLocal   ctermfg=black       ctermbg=cyan        guisp=#00dd99
 hi SpellRare    ctermfg=white       ctermbg=darkmagenta guisp=#ff22ee
-hi DiffAdd      ctermfg=white       ctermbg=darkblue    cterm=NONE
+hi DiffAdd      ctermfg=white       ctermbg=blue    cterm=NONE
 hi DiffChange   ctermfg=black       ctermbg=darkmagenta cterm=NONE
 hi DiffDelete   ctermfg=black       ctermbg=red         cterm=bold
 hi DiffText     ctermfg=white       ctermbg=green       cterm=bold
@@ -108,9 +108,9 @@ hi Cursor       ctermfg=black       ctermbg=green       cterm=NONE
 hi CursorIM     ctermfg=black       ctermbg=white       cterm=reverse
 hi CursorLine   ctermfg=NONE        ctermbg=236         cterm=NONE
 hi CursorColumn ctermfg=NONE        ctermbg=236         cterm=NONE
-hi Visual       ctermfg=darkblue    ctermbg=gray        cterm=NONE
+hi Visual       ctermfg=NONE    ctermbg=236        cterm=NONE
 hi IncSearch    ctermfg=black       ctermbg=yellow      cterm=NONE
-hi Search       ctermfg=black       ctermbg=red         cterm=NONE
+hi Search       ctermfg=NONE       ctermbg=darkmagenta         cterm=NONE
 hi MatchParen   ctermfg=white       ctermbg=blue        cterm=NONE
 hi ModeMsg      ctermfg=yellow      ctermbg=NONE        cterm=NONE
 hi Title        ctermfg=red         ctermbg=NONE        cterm=bold
@@ -145,7 +145,7 @@ hi cCppParen    guifg=Orange
 if has("unix")
   if v:version<600
     highlight Normal  ctermfg=Grey      ctermbg=Black  cterm=NONE  guifg=Grey80    guibg=Black gui=NONE
-    highlight Search  ctermfg=Black     ctermbg=Red    cterm=bold  guifg=Black     guibg=Red   gui=bold
+    highlight Search  ctermfg=NONE     ctermbg=DarkMagenta    cterm=bold  guifg=Black     guibg=Red   gui=bold
     highlight Visual  ctermfg=Black     ctermbg=yellow cterm=bold  guifg=#404040               gui=bold
     highlight Special ctermfg=LightBlue                cterm=NONE  guifg=LightBlue             gui=NONE
     highlight Comment ctermfg=Cyan                     cterm=NONE  guifg=LightBlue             gui=NONE
