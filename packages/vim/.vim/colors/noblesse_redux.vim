@@ -73,7 +73,7 @@ hi Special      guifg=Orange        guibg=NONE    gui=NONE
 hi SpecialChar  guifg=Orange        guibg=NONE    gui=NONE
 hi Ignore       guifg=bg            guibg=NONE    gui=NONE
 hi Error        guifg=Red           guibg=Grey10  gui=NONE
-hi Todo         guifg=LightCyan     guibg=Grey20  gui=NONE
+hi Todo         guifg=NONE     guibg=DarkRed  gui=NONE
 hi Underlined   guifg=#80a0ff       guibg=NONE    gui=underline
 
 
@@ -108,9 +108,9 @@ hi Cursor       ctermfg=black       ctermbg=green       cterm=NONE
 hi CursorIM     ctermfg=black       ctermbg=white       cterm=reverse
 hi CursorLine   ctermfg=NONE        ctermbg=236         cterm=NONE
 hi CursorColumn ctermfg=NONE        ctermbg=236         cterm=NONE
-hi Visual       ctermfg=NONE    ctermbg=236        cterm=NONE
+hi Visual       ctermfg=NONE        ctermbg=236         cterm=NONE
 hi IncSearch    ctermfg=black       ctermbg=yellow      cterm=NONE
-hi Search       ctermfg=NONE       ctermbg=darkmagenta         cterm=NONE
+hi Search       ctermfg=NONE        ctermbg=darkmagenta cterm=NONE
 hi MatchParen   ctermfg=white       ctermbg=blue        cterm=NONE
 hi ModeMsg      ctermfg=yellow      ctermbg=NONE        cterm=NONE
 hi Title        ctermfg=red         ctermbg=NONE        cterm=bold
@@ -128,8 +128,8 @@ hi Type         ctermfg=green       ctermbg=NONE        cterm=bold
 hi Special      ctermfg=brown       ctermbg=NONE        cterm=bold
 hi SpecialChar  ctermfg=brown       ctermbg=NONE        cterm=NONE
 hi Ignore       ctermfg=darkgray    ctermbg=NONE        cterm=NONE
-hi Error        ctermfg=black       ctermbg=LightRed         cterm=NONE
-hi Todo         ctermfg=black       ctermbg=yellow      cterm=bold
+hi Error        ctermfg=black       ctermbg=LightRed    cterm=NONE
+hi Todo         ctermfg=NONE       ctermbg=darkred      cterm=bold
 hi Underlined   ctermfg=NONE        ctermbg=NONE        cterm=underline   term=underline
 
 " syn match Braces display '[{}()\[\]]'
