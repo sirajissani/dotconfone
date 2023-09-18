@@ -25,7 +25,7 @@ set ignorecase " ignores case of letters on searches
 set smartcase  " Override 'ignorecase' if the search pattern has upper case
 
 " Font
-set guifont=Fira\ Code:h12,Inconsolata:h12,mononoki:h10,Monaco:h12,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
+set guifont=Menlo:h14,Fira\ Code:h12,Inconsolata:h12,mononoki:h10,Monaco:h12,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
 
 execute pathogen#infect()
 execute pathogen#helptags()
