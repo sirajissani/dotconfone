@@ -105,9 +105,9 @@ endif
 " Y yanks till the end of the line
 :map Y y$
 
-" Build cscope database and ctags with CTRL+F12
+" Build cscope database and ctags with F12
 ":source ~/.vim/plugin/cscope_maps.vim
-map <C-F12> :!git ls-files \| ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
+map <F12> :!git ls-files \| ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
 "set tags+=~/.vim/tags/cpp;./tags
 "let cscope_file=$HOME."/cscope.out"
 "if file_readable(cscope_file)
