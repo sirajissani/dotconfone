@@ -225,7 +225,7 @@ nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 nmap <silent> E :NERDTreeToggle<CR>
 let NERDTreeWinPos="left"
 let NERDTreeWinSize=35
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', 'build']
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeQuitOnOpen = 1
