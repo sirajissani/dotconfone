@@ -139,6 +139,7 @@ alias myeclipse='GTK2_RC_FILES=~/.gtkrc-eclipse ~/programs/eclipse/eclipse'
 alias mysource="find \`pwd\` -regex '.*\.[i,c,h][n,p]?[l,p]?$'"
 unalias vi
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
+alias fixtmux='stty sane; printf "\033k%s\033\\\033]2;%s\007" "$(basename "$SHELL")" "$(uname -n)"; tput reset; tmux refresh; tmux rename-window ,,,'
 
 alias dr='docker run -it --rm -v${PWD}:${PWD} -w ${PWD}'
 

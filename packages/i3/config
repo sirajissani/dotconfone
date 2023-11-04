@@ -9,6 +9,16 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# <<<<<<< merge_req_20181223
+#set $psst --no-startup-id
+#exec_always $psst xrdb -merge ~/.Xresources
+#set $compton_restart "killall compton; compton --opacity-rule '99:window_type = \"dock\" && class_g = \"i3bar\"' -CGb --vsync=opengl-swc --backend=glx"
+
+# fake-outputs 960x540+0+0,960x540+960+0,960x540+0+540,960x540+960+540
+# fake-outputs 3840x1080+0+0,1920x1080+3840+0
+# fake-outputs 1920x1080+0+0,1920x1080+1920+0
+# =======
+
 # Set up single monitor on DP-3 if available
 exec ~/.config/i3/displays.sh
 
@@ -191,19 +201,27 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` -5%
-bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` -5% #decrease sound volume
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` toggle # mute sound
 bindsym XF86AudioMicMute     exec --no-startup-id pactl set-sink-volume `pactl list sinks |grep "RUNNING" -B1 |grep "^Sink" |awk -F# '{print $NF}'` 100%
-bindsym $mod+Ctrl+space exec playerctl play-pause
+
 
 # Move windows across workspaces
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+minus move scratchpad # Change to "sticky enable; move scratchpad" to make scratchpad visible on all workspaces
 bindsym $mod+minus scratchpad show
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp   exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# For 17.04 and above use https://github.com/haikarainen/light.git
+# bindsym XF86MonBrightnessUp   exec light -A 5 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+
+# Lock screen
+bindsym $mod+l exec i3lock -c 333333 -i `grep -o "/.*png" ~/.fehbg` && exec xset dpms force off
+exec_always --no-startup-id xautolock -time 15 -locker 'i3lock -i `grep -o \"\/.*png\" ~/.fehbg` -c 333333 ; xset dpms force off'
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -223,14 +241,16 @@ client.focused #880000 #880000 #FFFFFF #FF0000
 
 # Enable compton to avoid screen tearing, opacity rule is just for reference
 # Test using https://www.youtube.com/watch?v=0RvIbVmCOxg
-#exec --no-startup-id compton --opacity-rule '99:window_type = "dock" && class_g = "i3bar"' -CGb --vsync=opengl-swc --backend=glx
-#exec --no-startup-id compton --config ~/.config/i3/compton.conf -b
+exec_always $compton_restart
 # Start pulseaudio
-#exec --no-startup-id start-pulseaudio-x11
-#exec --no-startup-id mate-volume-control-applet
+exec --no-startup-id start-pulseaudio-x11
+# exec --no-startup-id mate-volume-control-applet
 # Network/Bluetooth access
-#exec --no-startup-id blueman-applet
-#exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id nm-applet
+# Managing screensavers
+# exec --no-startup-id caffeine-indicator
+
 # Provide monitor applet, auto mounting of media
 #exec --no-startup-id mate-settings-daemon
 

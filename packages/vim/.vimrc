@@ -8,7 +8,8 @@ set mouse=a            " Enable mouse usage (all modes) in terminals
 set mousehide          " Hide mouse after chars typed
 set encoding=utf-8     " you really should be using utf-8 now
 set termencoding=utf-8 " ditto
-set clipboard+=unnamed " Yanks go on clipboard instead.
+set clipboard^=unnamed
+set clipboard^=unnamedplus " Yanks go on clipboard instead.
 set history=10000      " Number of things to remember in history.
 set timeoutlen=250     " Time to wait after ESC (default causes an annoying delay)
 set laststatus=2       " Always show status line.
@@ -109,18 +110,20 @@ endif
 ":source ~/.vim/plugin/cscope_maps.vim
 map <F12> :!git ls-files \| ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
 "set tags+=~/.vim/tags/cpp;./tags
-"let cscope_file=$HOME."/cscope.out"
-"if file_readable(cscope_file)
-"  cs reset
-"  cs add ~/cscope.out
-"endif
-set tags+=tags;/
-"set cscopequickfix=a-,s-,c-,d-,i-,t-,e-
+
+let cscope_file=$HOME."/cscope.out"
+if file_readable(cscope_file)
+  cs reset
+  silent! cs add ~/cscope.out
+endif
+set tags=~/tags
+set cscopequickfix=a-,s-,c-,d-,i-,t-,e-
+
 "Use following to map C-] to cstag
 "set cscopetag
 "Alternately use C-\ for :cstag and keep C-] for :tag
 map <C-\> <Esc>:cstag <C-r><C-W><CR>
-
+map <C-w><C-\> :split<CR>:exec("cstag ".expand("<cword>"))<CR>
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|BUILD|dist|__build|venv.*)|(\.(swp|ico|git|svn))$'
 
 " Dictionary for keyword i_C-X_C-K completion
@@ -147,9 +150,9 @@ let html_number_lines=1
 let html_use_css=1
 let use_xhtml=1
 
-" Quickfix Window
+" Quickfix Window - cf forces file to reload, silent skips errors
 map <F5> <esc>:make<cr>
-map <F6> <esc>:copen<cr><esc><C-w>J<cr>
+map <F6> <esc>:silent! cf<cr><esc>:copen<cr><esc><C-w>J<esc>:silent! cf<cr>
 map cn <esc>:cn<cr>
 map cp <esc>:cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -161,6 +164,11 @@ map cp <esc>:cp<cr>
 :set winminheight=0
 map <C-W><C-Left> <C-W>h
 map <C-W><C-Right> <C-W>l
+
+if has('nvim')
+" Use C-w for switching windows when using :terminal
+tnoremap <C-w> <C-\><C-n><C-w>
+endif
 
 " Zoom current window
 "map <C-z> <C-W>_
@@ -317,12 +325,23 @@ autocmd FileType  c,cpp,h,hpp,cxx   setlocal cc=88 | setlocal shiftwidth=2 | set
 autocmd FileType python   setlocal cc=88 | setlocal shiftwidth=4 | setlocal tabstop=4 | setlocal softtabstop=4 | set noic
 autocmd FileType  conque_term       setlocal nolist
 
-"let g:jedi#force_py_version = 3
-let g:neocomplete#enable_at_startup = 1
+if has('nvim')
+    " let g:deoplete#sources#clang#libclang_path = '/usr/lib/x86_64-linux-gnu/libclang.so.1'
+    " let g:deoplete#sources#clang#clang_header = '/usr/include/clang/'
+    " let g:deoplete#sources#jedi#show_docstring = 1
+    " let g:deoplete#sources#clang#clang_complete_database = '/home/csghone/work/platform/Debug/'
+    call deoplete#enable()
+else
+    let g:jedi#force_py_version = 3
+    let g:neocomplete#enable_at_startup = 1
+endif
+
 
 nmap <Leader>z <Plug>(easymotion-sn)
 nmap <Leader>t <Plug>(easymotion-next)
 nmap <Leader>T <Plug>(easymotion-prev)
 nmap <Leader><C-]> :TagbarToggle<CR>
 
-
+" Set errorformat for Python - comment this out if you are wokring on C/C++
+" and use 'quickfix'
+" set errorformat=#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#
