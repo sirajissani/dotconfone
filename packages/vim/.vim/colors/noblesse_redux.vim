@@ -49,11 +49,12 @@ hi TabLineFill  guifg=#000000       guibg=#c2bfa5 gui=NONE
 hi TabLineSel   guifg=#ffffff       guibg=#133293 gui=NONE
 hi Cursor       guifg=#000000       guibg=#20a020 gui=NONE
 hi CursorIM     guifg=#000000       guibg=#aaccff gui=NONE
-hi CursorLine   guifg=Grey10        guibg=Grey60  gui=NONE
-hi CursorColumn guifg=NONE          guibg=#1b1b1b gui=NONE
-hi Visual       guifg=Grey10        guibg=Grey95  gui=NONE
+hi CursorLine   guifg=NONE          guibg=Grey15  gui=NONE
+hi CursorColumn guifg=NONE          guibg=Grey15  gui=NONE
+hi CursorLineNr guifg=Yellow        guibg=Black   gui=bold
+hi Visual       guifg=NONE          guibg=Grey25  gui=bold
 hi IncSearch    guifg=#000000       guibg=#eedd33 gui=bold
-hi Search       guifg=Black         guibg=Red     gui=NONE
+hi Search       guifg=NONE         guibg=DarkMagenta     gui=NONE
 hi MatchParen   guifg=NONE          guibg=#3377aa gui=NONE
 hi ModeMsg      guifg=#eecc18       guibg=NONE    gui=NONE
 hi Title        guifg=#dd4452       guibg=NONE    gui=bold
@@ -72,7 +73,7 @@ hi Special      guifg=Orange        guibg=NONE    gui=NONE
 hi SpecialChar  guifg=Orange        guibg=NONE    gui=NONE
 hi Ignore       guifg=bg            guibg=NONE    gui=NONE
 hi Error        guifg=Red           guibg=Grey10  gui=NONE
-hi Todo         guifg=LightCyan     guibg=Grey20  gui=NONE
+hi Todo         guifg=NONE     guibg=DarkRed  gui=NONE
 hi Underlined   guifg=#80a0ff       guibg=NONE    gui=underline
 
 
@@ -83,10 +84,10 @@ hi Directory    ctermfg=cyan        ctermbg=NONE        cterm=NONE
 hi NonText      ctermfg=yellow      ctermbg=NONE        cterm=NONE
 hi SpecialKey   ctermfg=green       ctermbg=NONE        cterm=NONE
 hi SpellBad     ctermfg=white       ctermbg=darkred     guisp=#ff0011
-hi SpellCap     ctermfg=white       ctermbg=darkblue    guisp=#0044ff
+hi SpellCap     ctermfg=white       ctermbg=236    guisp=#0044ff
 hi SpellLocal   ctermfg=black       ctermbg=cyan        guisp=#00dd99
 hi SpellRare    ctermfg=white       ctermbg=darkmagenta guisp=#ff22ee
-hi DiffAdd      ctermfg=white       ctermbg=darkblue    cterm=NONE
+hi DiffAdd      ctermfg=white       ctermbg=blue    cterm=NONE
 hi DiffChange   ctermfg=black       ctermbg=darkmagenta cterm=NONE
 hi DiffDelete   ctermfg=black       ctermbg=red         cterm=bold
 hi DiffText     ctermfg=white       ctermbg=green       cterm=bold
@@ -105,11 +106,11 @@ hi TabLineFill  ctermfg=black       ctermbg=white       cterm=NONE
 hi TabLineSel   ctermfg=white       ctermbg=black       cterm=NONE
 hi Cursor       ctermfg=black       ctermbg=green       cterm=NONE
 hi CursorIM     ctermfg=black       ctermbg=white       cterm=reverse
-hi CursorLine   ctermfg=black       ctermbg=darkcyan    cterm=NONE
-hi CursorColumn ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi Visual       ctermfg=darkblue    ctermbg=gray        cterm=NONE
-hi IncSearch    ctermfg=white       ctermbg=yellow      cterm=NONE
-hi Search       ctermfg=black       ctermbg=red         cterm=NONE
+hi CursorLine   ctermfg=NONE        ctermbg=236         cterm=NONE
+hi CursorColumn ctermfg=NONE        ctermbg=236         cterm=NONE
+hi Visual       ctermfg=NONE        ctermbg=236         cterm=NONE
+hi IncSearch    ctermfg=black       ctermbg=yellow      cterm=NONE
+hi Search       ctermfg=NONE        ctermbg=darkmagenta cterm=NONE
 hi MatchParen   ctermfg=white       ctermbg=blue        cterm=NONE
 hi ModeMsg      ctermfg=yellow      ctermbg=NONE        cterm=NONE
 hi Title        ctermfg=red         ctermbg=NONE        cterm=bold
@@ -127,8 +128,8 @@ hi Type         ctermfg=green       ctermbg=NONE        cterm=bold
 hi Special      ctermfg=brown       ctermbg=NONE        cterm=bold
 hi SpecialChar  ctermfg=brown       ctermbg=NONE        cterm=NONE
 hi Ignore       ctermfg=darkgray    ctermbg=NONE        cterm=NONE
-hi Error        ctermfg=white       ctermbg=red         cterm=NONE
-hi Todo         ctermfg=black       ctermbg=yellow      cterm=bold
+hi Error        ctermfg=black       ctermbg=LightRed    cterm=NONE
+hi Todo         ctermfg=NONE       ctermbg=darkred      cterm=bold
 hi Underlined   ctermfg=NONE        ctermbg=NONE        cterm=underline   term=underline
 
 " syn match Braces display '[{}()\[\]]'
@@ -144,7 +145,7 @@ hi cCppParen    guifg=Orange
 if has("unix")
   if v:version<600
     highlight Normal  ctermfg=Grey      ctermbg=Black  cterm=NONE  guifg=Grey80    guibg=Black gui=NONE
-    highlight Search  ctermfg=Black     ctermbg=Red    cterm=bold  guifg=Black     guibg=Red   gui=bold
+    highlight Search  ctermfg=NONE     ctermbg=DarkMagenta    cterm=bold  guifg=Black     guibg=Red   gui=bold
     highlight Visual  ctermfg=Black     ctermbg=yellow cterm=bold  guifg=#404040               gui=bold
     highlight Special ctermfg=LightBlue                cterm=NONE  guifg=LightBlue             gui=NONE
     highlight Comment ctermfg=Cyan                     cterm=NONE  guifg=LightBlue             gui=NONE

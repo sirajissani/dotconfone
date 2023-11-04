@@ -16,7 +16,7 @@ PREFFILE="pref.conf"
 function loop_script_array() {
     for key in $1
     do
-        file=`echo "ubuntu/scripts/install_scripts_"$key".sh"`
+        file=`echo "ubuntu/scripts/install_packages_"$key".sh"`
         $file setup
         $file install
     done

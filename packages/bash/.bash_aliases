@@ -1,7 +1,14 @@
 # enable color support of ls and also add handy aliases
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
-	alias ls='ls --color=auto -h'
+    alias ls='LC_COLLATE=C ls -h --group-directories-first --color=auto'
 
     alias grep='grep -E --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -12,7 +19,9 @@ fi
 alias pgrep='pgrep -fl'
 
 #Use Extended Regular Expressions!
-alias sed='sed -r'
+# makes auto-completion of bash messy in some cases!
+# Commenting till we find a work-around
+#alias sed='sed -r'
 
 # some more ls aliases
 alias ll="ls -CFlh -Itags -I'cscope*'"
@@ -36,11 +45,13 @@ alias td='tree -daC'
 #Case insensitive searching if search string
 #contains only lowercase letters => smartcase
 export LESS=' -R -i'
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESSOPEN="| `which src-hilite-lesspipe.sh` %s"
 
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # make commands verbose
-alias rm='rm -Iv'
+alias rm='rm -v'
 alias cp='cp -v'
 alias mv='mv -v'
 alias mkdir='mkdir -p -v'
@@ -67,13 +78,6 @@ alias httpmirror='wget --tries 7 --waitretry=30 --wait=5 --random-wait --user-ag
 #Conky Stuff
 alias lyr='conky -c ~/.conkyrc_lyrics &> /dev/null'
 alias con='conky -c ~/.conkyrc &> /dev/null'
-
-#alias for random words as a typing excercise in ktouch
-alias randwords="cat /usr/share/dict/words |grep -v \' | grep '^[a-z]'| shuf| head -250 | tr '\n' ' ' | line > ~/.ktouch/middle; cat /home/chillu/.ktouch/start /home/chillu/.ktouch/middle /home/chillu/.ktouch/end > /home/chillu/.ktouch/random.xml"
-
-# alias mpz='aoss mplayer -aspect 16:10'
-# alias mp='aoss mplayer'
-# alias mplayer='aoss mplayer'
 
 # List top level directory sizes under the current directory
 alias dsl='find -maxdepth 1 -type d -exec du '{}' -s \; | sort -nr'
@@ -103,33 +107,8 @@ alias myvncserver='x11vnc -display :0 -usepw -forever -ncache 10 -scale 0.75 -no
 #Watch current directory for changes with most recent at the top
 alias mywatch='watch -n1 tree -sht'
 
-#Remove Annoying leading pages from JSTOR downloaded papers
-function choplead
-{
-    if [ -z "$2" ]
-    then
-       echo "Chopping off the first page"
-       myvar=1
-    else
-       myvar=$2
-       echo "Chopping off the first $myvar page(s)"
-    fi
-    pdftk "$1" cat $(($myvar + 1))-end output /tmp/out.pdf
-    mv /tmp/out.pdf "$1"
-}
-
 #vim pager
-alias vmore="gvim -u ~/.vimrc.more -"
-
-#apt aliases
-alias ag='sudo apt-get'
-alias agi='sudo apt-get install'
-alias agr='sudo apt-get remove'
-alias agu='sudo apt-get update'
-alias aga='sudo apt-get autoremove'
-alias acs='apt-cache search'
-alias dpl='dpkg -l'
-alias dpp='dpkg -p'
+alias vmore="vim -u ~/.vimrc -"
 
 #hexdump
 alias hd='od -Ad -tx1z -w16 -v'
@@ -138,22 +117,11 @@ alias hd='od -Ad -tx1z -w16 -v'
 alias cal='cal -3m'
 psu(){ command ps -Hcl -F S f -u ${1:-$USER}; }
 
-#twidge
-alias twdm='twidge lsdm'
-alias twar='twidge lsarchive'
-alias twr='twidge lsrecent'
-alias twre='twidge lsreplies'
-alias twup='twidge update'
-
 #info
 alias info='info --vi-keys'
 
 #wireless
-alias wfind='sudo iwlist eth0 scan | grep "(ESSID|Quality)"'
-
-#Common places of interest
-alias ipmsw='cd /home/siraj/Documents/Office/GWProj/IPM_AppSM/IPM/appsw/src'
-alias ipmswusb='cd /media/ANGSTROM/Siraj/Office/GWproj/IPM/Software/IPM_AppSM/IPM/appsw/src/'
+alias wfind='sudo iwlist wlp3s0 scan | grep "(ESSID|Quality)"'
 
 #mpd mpc
 alias mpdinit='sudo /etc/init.d/mpd'
@@ -164,6 +132,8 @@ alias mpch='mpc -h 192.168.1.5'
 
 alias gdb='gdb -q'
 alias ssh='ssh -X'
+#SSH with compression
+alias sshc='ssh -XC -c blowfish-cbc,arcfour'
 
 alias myeclipse='GTK2_RC_FILES=~/.gtkrc-eclipse ~/programs/eclipse/eclipse'
 alias mysource="find \`pwd\` -regex '.*\.[i,c,h][n,p]?[l,p]?$'"
@@ -171,3 +141,26 @@ unalias vi
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 alias fixtmux='stty sane; printf "\033k%s\033\\\033]2;%s\007" "$(basename "$SHELL")" "$(uname -n)"; tput reset; tmux refresh; tmux rename-window ,,,'
 
+alias dr='docker run -it --rm -v${PWD}:${PWD} -w ${PWD}'
+
+function smssflash {
+  echo "Executing: \"STM32_Programmer_CLI -c port=SWD reset=HWrst -d \"$1\" 0x08000000 -v -hardRst\""
+  STM32_Programmer_CLI -c port=SWD reset=HWrst -d "$1" 0x08000000 -v -hardRst
+}
+
+function finf() {
+  searchdir=""
+  if [ $# -ge 2 ]; then
+    searchdir="$2"
+  fi
+
+  filepattern=""
+  if [ $# -ge 3 ]; then
+    filepattern="-regextype grep -iregex '$3'"
+  fi
+
+  key="\"$1\""
+
+  echo "find ${searchdir} -type f ${filepattern} | xargs grep -EHni --color=auto ${key}"
+  find ${searchdir} -type f ${filepattern} | xargs grep -EHni --color=auto ${key}
+}
