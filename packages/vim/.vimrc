@@ -282,9 +282,6 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 map <C-Left> b
 map <C-Right> e
 
-" Use homebrew's clangd
-let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
-
 if &term =~ '^screen'
     " tmux will send xterm-style keys when its xterm-keys option is on
     execute "set <xUp>=\e[1;*A"
