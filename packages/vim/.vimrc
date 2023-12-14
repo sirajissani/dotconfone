@@ -25,7 +25,7 @@ set ignorecase " ignores case of letters on searches
 set smartcase  " Override 'ignorecase' if the search pattern has upper case
 
 " Font
-set guifont=Menlo:h14,Fira\ Code:h12,Inconsolata:h12,mononoki:h10,Monaco:h12,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
+set guifont=Menlo:h13,Fira\ Code:h12,Inconsolata:h12,mononoki:h10,Monaco:h12,DejaVu\ Sans\ Mono\ 11,Monospace\ 11
 
 execute pathogen#infect()
 execute pathogen#helptags()
@@ -142,6 +142,19 @@ set keywordprg=man\ -P\ more
 :vnoremap < <gv
 :vnoremap > >gv
 
+" :ALEInfo
+let g:ale_cpp_cc_executable = 'g++'
+let g:ale_linter_aliases = { 'cc': ['gcc', 'clang', 'g++', 'clang++'] }
+let g:ale_linters = {'cpp': ['cc', 'clangtidy', 'g++', 'cppcheck']}
+let g:ale_linters_ignore = {}
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'cpp': ['clangtidy', 'clang-format'],
+\}
+let g:ale_cpp_cc_options = "-std=c++2b -Wall"
+let g:ale_cpp_clangd_options = "-std=c++2b -Wall"
+
 " :TOhtml
 let html_number_lines=1
 let html_use_css=1
@@ -172,9 +185,9 @@ map <C-n> 3<C-W>-
 
 " Tabs
 ":map <C-t> :tabnew<CR>
-":map <C-q> :tabclose<cr>
-":map <C-p> :tabprevious<cr>
-":map <C-n> :tabnext<cr>
+:map <C-q> :tabclose<cr>
+:map <C-b> :tabprevious<cr>
+:map <C-n> :tabnext<cr>
 "noremap <silent> <C-Left> :exe "silent! tabmove " . (tabpagenr() - 2)<CR>
 "noremap <silent> <C-Right> :exe "silent! tabmove " . tabpagenr()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -316,9 +329,6 @@ autocmd BufEnter *.pyscn :setlocal filetype=python
 autocmd FileType  c,cpp,h,hpp,cxx   setlocal cc=88 | setlocal shiftwidth=2 | setlocal tabstop=2 | setlocal softtabstop=2 | set noic
 autocmd FileType python   setlocal cc=88 | setlocal shiftwidth=4 | setlocal tabstop=4 | setlocal softtabstop=4 | set noic
 autocmd FileType  conque_term       setlocal nolist
-
-"let g:jedi#force_py_version = 3
-let g:neocomplete#enable_at_startup = 1
 
 nmap <Leader>z <Plug>(easymotion-sn)
 nmap <Leader>t <Plug>(easymotion-next)
