@@ -108,18 +108,17 @@ endif
 " Build cscope database and ctags with F12
 ":source ~/.vim/plugin/cscope_maps.vim
 map <F12> :!git ls-files \| ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
-"set tags+=~/.vim/tags/cpp;./tags
+set tags+=~/.vim/tags/cpp;./tags
 "let cscope_file=$HOME."/cscope.out"
 "if file_readable(cscope_file)
 "  cs reset
 "  cs add ~/cscope.out
 "endif
-set tags+=tags;/
 "set cscopequickfix=a-,s-,c-,d-,i-,t-,e-
 "Use following to map C-] to cstag
 "set cscopetag
 "Alternately use C-\ for :cstag and keep C-] for :tag
-map <C-\> <Esc>:cstag <C-r><C-W><CR>
+"map <C-\> <Esc>:cstag <C-r><C-W><CR>
 
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|BUILD|dist|__build|venv.*)|(\.(swp|ico|git|svn))$'
 
@@ -152,8 +151,9 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'cpp': ['clangtidy', 'clang-format'],
 \}
-let g:ale_cpp_cc_options = "-std=c++2b -Wall"
-let g:ale_cpp_clangd_options = "-std=c++2b -Wall"
+let g:ale_cpp_cc_options = "-std=c++2b -Wall -Wextra -Weffc++ -Wsign-conversion"
+let g:ale_cpp_clangd_options = "-std=c++2b -Wall -Wextra -Weffc++ -Wsign-conversion"
+let g:ale_python_pylint_options = '--max-line-length=88'
 
 " :TOhtml
 let html_number_lines=1
@@ -161,6 +161,7 @@ let html_use_css=1
 let use_xhtml=1
 
 " Quickfix Window
+:set makeprg=ninja\ -Cbuild
 map <F5> <esc>:make<cr>
 map <F6> <esc>:copen<cr><esc><C-w>J<cr>
 map cn <esc>:cn<cr>
@@ -208,6 +209,11 @@ set cindent
 
 " Tex flavor := Latex
 let g:tex_flavor='latex'
+
+" Ascii Doctor formatting
+autocmd BufNewFile,BufRead *.adoc set filetype=asciidoc
+nnoremap <Leader>ad :!asciidoctor %<CR>
+nnoremap <Leader>ap :!asciidoctor-pdf %<CR>
 
 " Python formatting
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
