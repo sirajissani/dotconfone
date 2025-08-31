@@ -142,18 +142,42 @@ set keywordprg=man\ -P\ more
 :vnoremap > >gv
 
 " :ALEInfo
+" === ALE: C++ Linter Settings ===
 let g:ale_cpp_cc_executable = 'g++'
+let g:ale_cpp_cc_options = "-std=c++2b -Wall -Wextra -Weffc++ -Wsign-conversion"
 let g:ale_linter_aliases = { 'cc': ['gcc', 'clang', 'g++', 'clang++'] }
-let g:ale_linters = {'cpp': ['cc', 'clangtidy', 'g++', 'cppcheck']}
+let g:ale_linters = {
+\   'cpp': ['cc', 'clangtidy'],
+\   'python': ['flake8', 'pylint'],
+\}
+let g:ale_cpp_clangd_options = '
+\   -std=c++2b -Wall -Wextra -Weffc++ -Wsign-conversion
+\   --compile-commands-dir=build
+\   '
 let g:ale_linters_ignore = {}
+
+" === ALE: Fixers ===
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
 \   'cpp': ['clangtidy', 'clang-format'],
+\   'python': ['black', 'isort'],
 \}
-let g:ale_cpp_cc_options = "-std=c++2b -Wall -Wextra -Weffc++ -Wsign-conversion"
-let g:ale_cpp_clangd_options = "-std=c++2b -Wall -Wextra -Weffc++ -Wsign-conversion"
-let g:ale_python_pylint_options = '--max-line-length=88'
+let g:ale_fix_on_save = 1
+
+" === ALE: Python linter config (removed hardcoded pylint options) ===
+" Remove this line to allow pylint to auto-detect config:
+" let g:ale_python_pylint_options = '--max-line-length=88'
+
+" === Automatically cd to project root (for ALE config discovery) ===
+function! s:AutoCdToProjectRoot()
+  let l:root = finddir('.git', expand('%:p:h') . ';')
+  if !empty(l:root)
+    execute 'lcd' fnamemodify(l:root, ':h')
+  endif
+endfunction
+
+autocmd BufEnter * silent! call s:AutoCdToProjectRoot()
 
 " :TOhtml
 let html_number_lines=1
@@ -293,7 +317,7 @@ if &term =~ '^screen'
     execute "set <xUp>=\e[1;*A"
     execute "set <xDown>=\e[1;*B"
     execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"    
+    execute "set <xLeft>=\e[1;*D"
 endif
 
 
@@ -338,4 +362,4 @@ nmap <Leader>t <Plug>(easymotion-next)
 nmap <Leader>T <Plug>(easymotion-prev)
 nmap <Leader><C-]> :TagbarToggle<CR>
 
-
+let g:python3_host_prog = '$HOME/.pyenv/versions/3.13.1/bin/python3'
