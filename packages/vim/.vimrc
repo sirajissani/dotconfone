@@ -7,7 +7,6 @@ set noshowmatch        " Show matching brackets.
 set mouse=a            " Enable mouse usage (all modes) in terminals
 set mousehide          " Hide mouse after chars typed
 set encoding=utf-8     " you really should be using utf-8 now
-set termencoding=utf-8 " ditto
 set clipboard+=unnamed " Yanks go on clipboard instead.
 set history=10000      " Number of things to remember in history.
 set timeoutlen=250     " Time to wait after ESC (default causes an annoying delay)
